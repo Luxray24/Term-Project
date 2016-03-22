@@ -27,21 +27,23 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="optionD" min="-2" max="-2" attributes="0"/>
-                          <Component id="optionB" min="-2" max="-2" attributes="0"/>
-                          <Component id="optionA" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="optionC" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="correctAnswer" min="-2" max="-2" attributes="0"/>
+                          <Component id="option3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="questionJLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="option1" min="-2" max="-2" attributes="0"/>
+                              <Component id="option2" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="mainMenuJButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="submitJButton" min="-2" max="-2" attributes="0"/>
@@ -58,15 +60,15 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="questionJLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="optionA" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="option1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="optionB" min="-2" max="-2" attributes="0"/>
+              <Component id="option2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="optionC" min="-2" max="-2" attributes="0"/>
+              <Component id="option3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="optionD" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <Component id="correctAnswer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="submitJButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="mainMenuJButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -86,7 +88,7 @@
         <Property name="text" type="java.lang.String" value="Which of the following is a Consumer?"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="optionA">
+    <Component class="javax.swing.JRadioButton" name="option1">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="optionGroup"/>
@@ -97,7 +99,7 @@
         <Property name="text" type="java.lang.String" value="Ficus"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="optionB">
+    <Component class="javax.swing.JRadioButton" name="option2">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="optionGroup"/>
@@ -108,7 +110,7 @@
         <Property name="text" type="java.lang.String" value="Algae"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="optionC">
+    <Component class="javax.swing.JRadioButton" name="option3">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="optionGroup"/>
@@ -119,7 +121,7 @@
         <Property name="text" type="java.lang.String" value="Plankton"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="optionD">
+    <Component class="javax.swing.JRadioButton" name="correctAnswer">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="optionGroup"/>
@@ -159,6 +161,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Next &gt;&gt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextJButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

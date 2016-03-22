@@ -1,0 +1,14 @@
+//Question 0
+Which of the following is a consumer?
+Bear
+Ficus
+Algae
+Plankton
+End
+//Question 1
+Which of the following is a producer?
+Grass
+Bear
+Shark
+Rhino
+End

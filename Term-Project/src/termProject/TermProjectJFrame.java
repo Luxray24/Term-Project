@@ -19,6 +19,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     
     public TermProjectJFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
         quiz = new Quiz();
     }
 
