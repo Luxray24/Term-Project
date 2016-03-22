@@ -14,8 +14,12 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     /**
      * Creates new form TermProjectJFrame
      */
+    
+    public Quiz quiz;
+    
     public TermProjectJFrame() {
         initComponents();
+        quiz = new Quiz();
     }
 
     /**
@@ -28,19 +32,25 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        quizJButton = new javax.swing.JButton();
+        gameJButton = new javax.swing.JButton();
+        chooseJLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Quiz");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        quizJButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        quizJButton.setText("Quiz");
+        quizJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                quizJButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Game");
+        gameJButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        gameJButton.setText("Game");
+
+        chooseJLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        chooseJLabel.setText("Choose 1:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,27 +58,34 @@ public class TermProjectJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(quizJButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gameJButton)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(chooseJLabel)
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addGap(42, 42, 42)
+                .addComponent(chooseJLabel)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(162, Short.MAX_VALUE))
+                    .addComponent(quizJButton)
+                    .addComponent(gameJButton))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void quizJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizJButtonActionPerformed
+        this.setVisible(false);
+        quiz.setVisible(true);
+    }//GEN-LAST:event_quizJButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,8 +123,9 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel chooseJLabel;
+    private javax.swing.JButton gameJButton;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JButton quizJButton;
     // End of variables declaration//GEN-END:variables
 }
