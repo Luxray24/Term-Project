@@ -7,7 +7,7 @@ package termProject;
 
 /**
  *
- * @author Mark
+ * @author Mark Swarner, Georgia Snelling
  */
 public class TermProjectJFrame extends javax.swing.JFrame {
 
@@ -33,60 +33,61 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
-        quizJButton = new javax.swing.JButton();
-        gameJButton = new javax.swing.JButton();
-        chooseJLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        articButton = new javax.swing.JButton();
+        marineButton = new javax.swing.JButton();
+        rainforestButton = new javax.swing.JButton();
+        grasslandButton = new javax.swing.JButton();
+        freshwaterButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        quizJButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        quizJButton.setText("Quiz");
-        quizJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quizJButtonActionPerformed(evt);
-            }
-        });
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(null);
 
-        gameJButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        gameJButton.setText("Game");
+        articButton.setBackground(new java.awt.Color(0, 255, 255));
+        articButton.setText("Artic Ecosystem");
+        jPanel1.add(articButton);
+        articButton.setBounds(580, 20, 180, 80);
 
-        chooseJLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        chooseJLabel.setText("Choose 1:");
+        marineButton.setText("Marine Ecosystem");
+        jPanel1.add(marineButton);
+        marineButton.setBounds(1120, 290, 170, 90);
+
+        rainforestButton.setText("Rainforest Ecosystem");
+        jPanel1.add(rainforestButton);
+        rainforestButton.setBounds(230, 490, 200, 50);
+
+        grasslandButton.setText("Grassland Ecosystem");
+        jPanel1.add(grasslandButton);
+        grasslandButton.setBounds(560, 370, 160, 50);
+
+        freshwaterButton.setText("Freshwater Ecosystem");
+        jPanel1.add(freshwaterButton);
+        freshwaterButton.setBounds(140, 190, 210, 50);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Map.jpg"))); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1300, 970);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(quizJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(gameJButton)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1304, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(chooseJLabel)
-                .addContainerGap(163, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(chooseJLabel)
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quizJButton)
-                    .addComponent(gameJButton))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void quizJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizJButtonActionPerformed
-        this.setVisible(false);
-        quiz.setVisible(true);
-    }//GEN-LAST:event_quizJButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,9 +125,13 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel chooseJLabel;
-    private javax.swing.JButton gameJButton;
+    private javax.swing.JButton articButton;
+    private javax.swing.JButton freshwaterButton;
+    private javax.swing.JButton grasslandButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JButton quizJButton;
+    private javax.swing.JButton marineButton;
+    private javax.swing.JButton rainforestButton;
     // End of variables declaration//GEN-END:variables
 }

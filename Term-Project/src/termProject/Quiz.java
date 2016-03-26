@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Mark
+ * @author Mark Swarner, Georgia Snelling
  */
 public class Quiz extends javax.swing.JFrame {
 

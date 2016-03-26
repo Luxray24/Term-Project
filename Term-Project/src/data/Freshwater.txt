@@ -1,0 +1,25 @@
+// Question 1
+1
+An organism that eats only animals is called a _____.
+omnivore
+Herbivore
+decomposer
+Carnivore
+Carnivore
+// Question 2
+2
+Which animal is a producer in a freshwater ecosystem ecosystem?
+Algae
+Tadpole
+Heron
+Duck
+Algae
+// Question 3
+3
+Which of the following is not a carnivore in a freshwater ecosystem ecosystem?
+Dragonflies
+Birds
+Moss
+Eels
+Moss
+

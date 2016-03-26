@@ -1,0 +1,24 @@
+// Question 1
+1
+Which animal isn’t a carnivore in the Grassland ecosystem?
+Lion
+Cheetah
+Hyena
+Gazel
+Gazel
+// Question 2
+2
+Which of the following is a producer in the Savannah?
+Lion
+Warthog
+Star Grass
+Gazel 
+Star Grass
+// Question 3
+3
+A consumer that eats both animals and plants are called a ______. 
+Omnivore
+producer
+Herbivore
+carnivore
+Omnivore
