@@ -5,6 +5,11 @@
  */
 package termProject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 /**
  *
  * @author Mark Swarner, Georgia Snelling
@@ -19,8 +24,8 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     
     public TermProjectJFrame() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        quiz = new Quiz();
+        //this.setLocationRelativeTo(null);
+        //quiz = new Quiz();
     }
 
     /**
@@ -33,61 +38,118 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
-        jPanel1 = new javax.swing.JPanel();
+        gamePanel = new javax.swing.JPanel();
         articButton = new javax.swing.JButton();
         marineButton = new javax.swing.JButton();
         rainforestButton = new javax.swing.JButton();
         grasslandButton = new javax.swing.JButton();
         freshwaterButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setLayout(null);
+        gamePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        gamePanel.setLayout(null);
 
         articButton.setBackground(new java.awt.Color(0, 255, 255));
         articButton.setText("Artic Ecosystem");
-        jPanel1.add(articButton);
+        articButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                articButtonActionPerformed(evt);
+            }
+        });
+        gamePanel.add(articButton);
         articButton.setBounds(580, 20, 180, 80);
 
         marineButton.setText("Marine Ecosystem");
-        jPanel1.add(marineButton);
+        marineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marineButtonActionPerformed(evt);
+            }
+        });
+        gamePanel.add(marineButton);
         marineButton.setBounds(1120, 290, 170, 90);
 
         rainforestButton.setText("Rainforest Ecosystem");
-        jPanel1.add(rainforestButton);
+        rainforestButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rainforestButtonActionPerformed(evt);
+            }
+        });
+        gamePanel.add(rainforestButton);
         rainforestButton.setBounds(230, 490, 200, 50);
 
         grasslandButton.setText("Grassland Ecosystem");
-        jPanel1.add(grasslandButton);
+        grasslandButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                grasslandButtonActionPerformed(evt);
+            }
+        });
+        gamePanel.add(grasslandButton);
         grasslandButton.setBounds(560, 370, 160, 50);
 
         freshwaterButton.setText("Freshwater Ecosystem");
-        jPanel1.add(freshwaterButton);
+        freshwaterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                freshwaterButtonActionPerformed(evt);
+            }
+        });
+        gamePanel.add(freshwaterButton);
         freshwaterButton.setBounds(140, 190, 210, 50);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Map.jpg"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 1300, 970);
+        backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Map.jpg"))); // NOI18N
+        gamePanel.add(backgroundImage);
+        backgroundImage.setBounds(0, 0, 1300, 970);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1304, Short.MAX_VALUE)
+                .addComponent(gamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1304, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(gamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void articButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articButtonActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_articButtonActionPerformed
+
+    private void marineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marineButtonActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_marineButtonActionPerformed
+
+    private void rainforestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rainforestButtonActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_rainforestButtonActionPerformed
+
+    private void grasslandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grasslandButtonActionPerformed
+        // Multiple Choice Questions
+        String filename = "/src/data/Freshwater.txt";
+        
+        ArrayList<Question> grasslandQuestion = new ArrayList<Question>();
+        Question grassland = null;
+        
+        importQuestionFiles(filename, grasslandQuestion);
+        
+        new Quiz(grasslandQuestion).setVisible(true);
+    }//GEN-LAST:event_grasslandButtonActionPerformed
+
+    private void freshwaterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freshwaterButtonActionPerformed
+        // Multiple Choice Questions
+        
+    }//GEN-LAST:event_freshwaterButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,13 +185,67 @@ public class TermProjectJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void importDragFiles( String fileName ) {
+        try {
+            InputStreamReader isr = new InputStreamReader(
+                    this.getClass().getResourceAsStream(fileName));
+            BufferedReader br = new BufferedReader(isr);
+            for (int i = 0; i < 2; i++) {
+                String comment = br.readLine();
+                if (comment == null) {
+                    break;
+                }
+                
+                String option1 = br.readLine();
+                String option2 = br.readLine();
+                String option3 = br.readLine();
+                String option4 = br.readLine();
+                String correctAnswer = br.readLine();
+                if (i == 1) {
+                    br.close();
+                }
+            }
+        } catch (IOException e) {
+
+        }
+    }
+    
+    public void importQuestionFiles( String fileName, ArrayList array) {
+        try {
+            InputStreamReader isr = new InputStreamReader(
+                    this.getClass().getResourceAsStream(fileName));
+            BufferedReader br = new BufferedReader(isr);
+            while (true)
+            {
+                String comment = br.readLine();
+                if (comment == null) {
+                    break;
+                }
+                int questionNumber = Integer.parseInt(br.readLine());
+                String question = br.readLine();
+                String option1 = br.readLine();
+                String option2 = br.readLine();
+                String option3 = br.readLine();
+                String option4 = br.readLine();
+                String correctAnswer = br.readLine();
+                
+                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer);
+                array.add(newQuestion);
+            }
+        } 
+        catch (IOException e) {
+
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton articButton;
+    private javax.swing.JLabel backgroundImage;
     private javax.swing.JButton freshwaterButton;
+    private javax.swing.JPanel gamePanel;
     private javax.swing.JButton grasslandButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton marineButton;
     private javax.swing.JButton rainforestButton;

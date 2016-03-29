@@ -8,6 +8,7 @@ package termProject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -20,15 +21,14 @@ public class Quiz extends javax.swing.JFrame {
     /**
      * Creates new form quizJFrame
      */
-    public final int NUMBER_OF_POSITIONS = 4;
-    public final int NUMBER_OF_QUESTIONS = 2;
+    
 
     TermProjectJFrame mainFrame;
     Question questions;
 
-    public Quiz() {
+    public Quiz(ArrayList array) {
         initComponents();
-        questions = new Question();
+        //questions = new Question();
         this.setLocationRelativeTo(null);
         mainMenuJButton.setVisible(false);
         nextJButton.setVisible(false);
@@ -36,18 +36,10 @@ public class Quiz extends javax.swing.JFrame {
         this.remove(option2);
         this.remove(option3);
         this.remove(correctAnswer);
-        setRandom();
-        setQuestion();
-        setOptions();
-        setOptionPositions();
+        
     }
 
-    Random random = new Random();
-    int randomInt = 0;
-    int w = 0;
-    int x = 0;
-    int y = 0;
-    int z = 0;
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -179,58 +171,11 @@ public class Quiz extends javax.swing.JFrame {
     }//GEN-LAST:event_mainMenuJButtonActionPerformed
 
     private void nextJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextJButtonActionPerformed
-        setRandom();
-        setQuestion();
-        setOptions();
-        setOptionPositions();
+        
     }//GEN-LAST:event_nextJButtonActionPerformed
 
-    private void setRandom() {
-        randomInt = random.nextInt(NUMBER_OF_QUESTIONS);
-        w = random.nextInt(NUMBER_OF_POSITIONS);
-        x = random.nextInt(NUMBER_OF_POSITIONS);
-        y = random.nextInt(NUMBER_OF_POSITIONS);
-        z = random.nextInt(NUMBER_OF_POSITIONS);
-        while (true) {
-            if (w == x || w == y || w == z) {
-                w = random.nextInt(NUMBER_OF_POSITIONS);
-                continue;
-            } else if (x == y || x == z) {
-                x = random.nextInt(NUMBER_OF_POSITIONS);
-                continue;
-            } else if (y == z) {
-                y = random.nextInt(NUMBER_OF_POSITIONS);
-                continue;
-            } else {
-                break;
-            }
-        }
-    }
-
-    private void setQuestion() {
-        //questionJLabel.setText(questions.questions[randomInt]);
-    }
-
-    private void setOptions() {
-        option1.setText(questions.option1[randomInt]);
-        option2.setText(questions.option2[randomInt]);
-        option3.setText(questions.option3[randomInt]);
-        correctAnswer.setText(questions.correctAnswer[randomInt]);
-    }
-
-    private void setOptionPositions() {
-        for (int i = 0; i < 4; i++) {
-            if (w == i) {
-                this.add(option1);
-            } else if (x == i) {
-                this.add(option2);
-            } else if (y == i) {
-                this.add(option3);
-            } else if (z == i) {
-                this.add(correctAnswer);
-            }
-        }
-    }
+    
+   
 
     /**
      * @param args the command line arguments
@@ -263,7 +208,7 @@ public class Quiz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Quiz().setVisible(true);
+                //new Quiz(ArrayList array).setVisible(true);
             }
         });
     }
