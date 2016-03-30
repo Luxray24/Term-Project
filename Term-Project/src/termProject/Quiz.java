@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,16 +27,25 @@ public class Quiz extends javax.swing.JFrame {
     TermProjectJFrame mainFrame;
     Question questions;
 
-    public Quiz(ArrayList array) {
+    public Quiz(ArrayList array, Question objQuestion) {
         initComponents();
+        groupButton();
         //questions = new Question();
         this.setLocationRelativeTo(null);
         mainMenuJButton.setVisible(false);
         nextJButton.setVisible(false);
-        this.remove(option1);
-        this.remove(option2);
-        this.remove(option3);
-        this.remove(correctAnswer);
+        
+        int number = objQuestion.getQuestionNumber();
+        String questionNumber = objQuestion.getQuestionNumber() + "";
+        String question = objQuestion.getQuestion();
+        String option1 = objQuestion.getOption1();
+        String option2 = objQuestion.getOption2();
+        String option3 = objQuestion.getOption3();
+        String option4 = objQuestion.getOption4();
+        String correctAnswer = objQuestion.getCorrectAnswer();
+        
+        questionJLabel.setText(questionNumber + ". " + question);
+        
         
     }
 
@@ -55,7 +65,7 @@ public class Quiz extends javax.swing.JFrame {
         option1 = new javax.swing.JRadioButton();
         option2 = new javax.swing.JRadioButton();
         option3 = new javax.swing.JRadioButton();
-        correctAnswer = new javax.swing.JRadioButton();
+        option4 = new javax.swing.JRadioButton();
         submitJButton = new javax.swing.JButton();
         mainMenuJButton = new javax.swing.JButton();
         nextJButton = new javax.swing.JButton();
@@ -77,9 +87,9 @@ public class Quiz extends javax.swing.JFrame {
         option3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         option3.setText("Plankton");
 
-        optionGroup.add(correctAnswer);
-        correctAnswer.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        correctAnswer.setText("Bear");
+        optionGroup.add(option4);
+        option4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        option4.setText("Bear");
 
         submitJButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         submitJButton.setText("Submit");
@@ -113,9 +123,9 @@ public class Quiz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGap(0, 96, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(correctAnswer)
+                            .addComponent(option4)
                             .addComponent(option3)
                             .addComponent(questionJLabel)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -142,7 +152,7 @@ public class Quiz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(option3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(correctAnswer)
+                .addComponent(option4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitJButton)
@@ -155,7 +165,7 @@ public class Quiz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        if (correctAnswer.isSelected()) {
+        if (option4.isSelected()) {
             JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
             mainMenuJButton.setVisible(true);
             nextJButton.setVisible(true);
@@ -165,9 +175,9 @@ public class Quiz extends javax.swing.JFrame {
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void mainMenuJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuJButtonActionPerformed
-        mainFrame = new TermProjectJFrame();
+        
         this.setVisible(false);
-        mainFrame.setVisible(true);
+                
     }//GEN-LAST:event_mainMenuJButtonActionPerformed
 
     private void nextJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextJButtonActionPerformed
@@ -211,15 +221,29 @@ public class Quiz extends javax.swing.JFrame {
                 //new Quiz(ArrayList array).setVisible(true);
             }
         });
+        
+               
     }
+    
+    private void groupButton( ) 
+        {
+
+            ButtonGroup radioButtonGroup = new ButtonGroup( );
+
+            radioButtonGroup.add(option1);
+            radioButtonGroup.add(option2);
+            radioButtonGroup.add(option3);
+            radioButtonGroup.add(option4);
+
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton correctAnswer;
     private javax.swing.JButton mainMenuJButton;
     private javax.swing.JButton nextJButton;
     private javax.swing.JRadioButton option1;
     private javax.swing.JRadioButton option2;
     private javax.swing.JRadioButton option3;
+    private javax.swing.JRadioButton option4;
     private javax.swing.ButtonGroup optionGroup;
     private javax.swing.JLabel questionJLabel;
     private javax.swing.JButton submitJButton;

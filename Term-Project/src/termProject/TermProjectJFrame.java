@@ -5,6 +5,7 @@
  */
 package termProject;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -51,7 +52,6 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         gamePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         gamePanel.setLayout(null);
 
-        articButton.setBackground(new java.awt.Color(0, 255, 255));
         articButton.setText("Artic Ecosystem");
         articButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,21 +99,19 @@ public class TermProjectJFrame extends javax.swing.JFrame {
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Map.jpg"))); // NOI18N
         gamePanel.add(backgroundImage);
-        backgroundImage.setBounds(0, 0, 1300, 970);
+        backgroundImage.setBounds(0, 0, 1300, 990);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(gamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1304, Short.MAX_VALUE)
+                .addComponent(gamePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1303, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(gamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(0, Short.MAX_VALUE))
+            .addComponent(gamePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -136,19 +134,86 @@ public class TermProjectJFrame extends javax.swing.JFrame {
 
     private void grasslandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grasslandButtonActionPerformed
         // Multiple Choice Questions
-        String filename = "/src/data/Freshwater.txt";
+        String fileName = "/data/Grasslands.txt";
         
-        ArrayList<Question> grasslandQuestion = new ArrayList<Question>();
+        ArrayList<Question> grasslandQuestions = new ArrayList<Question>();
         Question grassland = null;
         
-        importQuestionFiles(filename, grasslandQuestion);
+        //importQuestionFiles(filename, grasslandQuestions);
         
-        new Quiz(grasslandQuestion).setVisible(true);
+        try {
+            InputStreamReader isr = new InputStreamReader(
+                    this.getClass().getResourceAsStream(fileName));
+            BufferedReader br = new BufferedReader(isr);
+            while (true)
+            {
+                String comment = br.readLine();
+                if (comment == null) {
+                    break;
+                }
+                int questionNumber = Integer.parseInt(br.readLine());
+                String question = br.readLine();
+                String option1 = br.readLine();
+                String option2 = br.readLine();
+                String option3 = br.readLine();
+                String option4 = br.readLine();
+                String correctAnswer = br.readLine();
+                
+                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer);
+                grasslandQuestions.add(newQuestion);
+            }
+        } 
+        catch (IOException e) {
+
+        }
+        
+        grassland = grasslandQuestions.get(0);
+        
+        new Quiz(grasslandQuestions, grassland).setVisible(true);
+        
+        grasslandButton.setEnabled(false);
     }//GEN-LAST:event_grasslandButtonActionPerformed
 
     private void freshwaterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freshwaterButtonActionPerformed
         // Multiple Choice Questions
+        String fileName = "/data/Freshwater.txt";
         
+        ArrayList<Question> freshwaterQuestions = new ArrayList<Question>();
+        Question freshwater = null;
+        
+        //importQuestionFiles(filename, grasslandQuestions);
+        
+        try {
+            InputStreamReader isr = new InputStreamReader(
+                    this.getClass().getResourceAsStream(fileName));
+            BufferedReader br = new BufferedReader(isr);
+            while (true)
+            {
+                String comment = br.readLine();
+                if (comment == null) {
+                    break;
+                }
+                int questionNumber = Integer.parseInt(br.readLine());
+                String question = br.readLine();
+                String option1 = br.readLine();
+                String option2 = br.readLine();
+                String option3 = br.readLine();
+                String option4 = br.readLine();
+                String correctAnswer = br.readLine();
+                
+                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer);
+                freshwaterQuestions.add(newQuestion);
+            }
+        } 
+        catch (IOException e) {
+
+        }
+        
+        freshwater = freshwaterQuestions.get(0);
+        
+        new Quiz(freshwaterQuestions, freshwater).setVisible(true);
+        
+        freshwaterButton.setEnabled(false);
     }//GEN-LAST:event_freshwaterButtonActionPerformed
 
     /**
@@ -210,34 +275,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
 
         }
     }
-    
-    public void importQuestionFiles( String fileName, ArrayList array) {
-        try {
-            InputStreamReader isr = new InputStreamReader(
-                    this.getClass().getResourceAsStream(fileName));
-            BufferedReader br = new BufferedReader(isr);
-            while (true)
-            {
-                String comment = br.readLine();
-                if (comment == null) {
-                    break;
-                }
-                int questionNumber = Integer.parseInt(br.readLine());
-                String question = br.readLine();
-                String option1 = br.readLine();
-                String option2 = br.readLine();
-                String option3 = br.readLine();
-                String option4 = br.readLine();
-                String correctAnswer = br.readLine();
-                
-                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer);
-                array.add(newQuestion);
-            }
-        } 
-        catch (IOException e) {
-
-        }
-    }
+ 
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
