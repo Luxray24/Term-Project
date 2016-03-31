@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,29 +24,51 @@ public class Quiz extends javax.swing.JFrame {
      * Creates new form quizJFrame
      */
     
+    
+    ArrayList<Question> multipleQuestionsArray = new ArrayList<Question>();
+    Question multipleQuestion = null;
+        
+    int number;
+    int questionNumber;
+    String question;
+    String option1;
+    String option2;
+    String option3;
+    String option4;
+    String correctAnswer;
 
     TermProjectJFrame mainFrame;
     Question questions;
 
-    public Quiz(ArrayList array, Question objQuestion) {
+    public Quiz(ArrayList array, Question objQuestion, String imageName) {
         initComponents();
-        groupButton();
+        //groupButton();
         //questions = new Question();
         this.setLocationRelativeTo(null);
         mainMenuJButton.setVisible(false);
         nextJButton.setVisible(false);
         
-        int number = objQuestion.getQuestionNumber();
-        String questionNumber = objQuestion.getQuestionNumber() + "";
-        String question = objQuestion.getQuestion();
-        String option1 = objQuestion.getOption1();
-        String option2 = objQuestion.getOption2();
-        String option3 = objQuestion.getOption3();
-        String option4 = objQuestion.getOption4();
-        String correctAnswer = objQuestion.getCorrectAnswer();
+        multipleQuestionsArray = array;
+        multipleQuestion = objQuestion;
+        
+        number = multipleQuestion.getQuestionNumber();
+        String questionNumber = multipleQuestion.getQuestionNumber() + "";
+        question = multipleQuestion.getQuestion();
+        option1 = multipleQuestion.getOption1();
+        option2 = multipleQuestion.getOption2();
+        option3 = multipleQuestion.getOption3();
+        option4 = multipleQuestion.getOption4();
+        correctAnswer = multipleQuestion.getCorrectAnswer();
         
         questionJLabel.setText(questionNumber + ". " + question);
+        radio1.setText(option1);
+        radio2.setText(option2);
+        radio3.setText(option3);
+        radio4.setText(option4);
         
+        ImageIcon roomImage;
+        roomImage = new ImageIcon(imageName);
+        imageLabel.setIcon(roomImage);
         
     }
 
@@ -62,34 +85,38 @@ public class Quiz extends javax.swing.JFrame {
 
         optionGroup = new javax.swing.ButtonGroup();
         questionJLabel = new javax.swing.JLabel();
-        option1 = new javax.swing.JRadioButton();
-        option2 = new javax.swing.JRadioButton();
-        option3 = new javax.swing.JRadioButton();
-        option4 = new javax.swing.JRadioButton();
+        radio1 = new javax.swing.JRadioButton();
+        radio2 = new javax.swing.JRadioButton();
+        radio3 = new javax.swing.JRadioButton();
+        radio4 = new javax.swing.JRadioButton();
         submitJButton = new javax.swing.JButton();
         mainMenuJButton = new javax.swing.JButton();
         nextJButton = new javax.swing.JButton();
+        imagePanel = new javax.swing.JPanel();
+        imageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(864, 439));
+        setMinimumSize(new java.awt.Dimension(864, 439));
 
         questionJLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         questionJLabel.setText("Which of the following is a Consumer?");
 
-        optionGroup.add(option1);
-        option1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        option1.setText("Ficus");
+        optionGroup.add(radio1);
+        radio1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        radio1.setText("Ficus");
 
-        optionGroup.add(option2);
-        option2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        option2.setText("Algae");
+        optionGroup.add(radio2);
+        radio2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        radio2.setText("Algae");
 
-        optionGroup.add(option3);
-        option3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        option3.setText("Plankton");
+        optionGroup.add(radio3);
+        radio3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        radio3.setText("Plankton");
 
-        optionGroup.add(option4);
-        option4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        option4.setText("Bear");
+        optionGroup.add(radio4);
+        radio4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        radio4.setText("Bear");
 
         submitJButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         submitJButton.setText("Submit");
@@ -115,6 +142,14 @@ public class Quiz extends javax.swing.JFrame {
             }
         });
 
+        imagePanel.setMaximumSize(new java.awt.Dimension(529, 416));
+        imagePanel.setMinimumSize(new java.awt.Dimension(529, 416));
+        imagePanel.setLayout(null);
+
+        imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imagePanel.add(imageLabel);
+        imageLabel.setBounds(0, 0, 580, 410);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,56 +157,168 @@ public class Quiz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 96, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(option4)
-                            .addComponent(option3)
-                            .addComponent(questionJLabel)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(option1)
-                                .addComponent(option2)))
-                        .addGap(115, 115, 115))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(mainMenuJButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(submitJButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextJButton)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(nextJButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radio4)
+                            .addComponent(radio3)
+                            .addComponent(questionJLabel)
+                            .addComponent(radio2)
+                            .addComponent(radio1))))
+                .addGap(18, 18, 18)
+                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(questionJLabel)
                 .addGap(26, 26, 26)
-                .addComponent(option1)
+                .addComponent(radio1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(option2)
+                .addComponent(radio2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(option3)
+                .addComponent(radio3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(option4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(radio4)
+                .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submitJButton)
                     .addComponent(mainMenuJButton)
                     .addComponent(nextJButton))
                 .addGap(95, 95, 95))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-        if (option4.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
-            mainMenuJButton.setVisible(true);
-            nextJButton.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+             
+        if (radio1.isSelected()) 
+        {
+            if (option1.equals(correctAnswer))
+            {
+                if (multipleQuestion.getQuestionNumber()== 3)
+                {
+                    mainMenuJButton.setVisible(true);
+                    nextJButton.setVisible(false);
+                    submitJButton.setEnabled(false);
+                    radio1.setEnabled(false);
+                    radio2.setEnabled(false);
+                    radio3.setEnabled(false);
+                    radio4.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
+                    //mainMenuJButton.setVisible(true);
+                    nextJButton.setVisible(true);
+                }
+            }
+            else
+            {
+                radio1.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+            }
         }
+        else if (radio2.isSelected()) 
+        {
+            if (option2.equals(correctAnswer))
+            {
+                if (multipleQuestion.getQuestionNumber()== 3)
+                {
+                    mainMenuJButton.setVisible(true);
+                    nextJButton.setVisible(false);
+                    submitJButton.setEnabled(false);
+                    radio1.setEnabled(false);
+                    radio2.setEnabled(false);
+                    radio3.setEnabled(false);
+                    radio4.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
+                    //mainMenuJButton.setVisible(true);
+                    nextJButton.setVisible(true);
+                }
+            }
+             else
+            {
+                radio2.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+            }
+        }
+        else if (radio3.isSelected()) 
+        {
+            if (option3.equals(correctAnswer))
+            {
+                if (multipleQuestion.getQuestionNumber()== 3)
+                {
+                    mainMenuJButton.setVisible(true);
+                    nextJButton.setVisible(false);
+                    submitJButton.setEnabled(false);
+                    radio1.setEnabled(false);
+                    radio2.setEnabled(false);
+                    radio3.setEnabled(false);
+                    radio4.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
+                    //mainMenuJButton.setVisible(true);
+                    nextJButton.setVisible(true);
+                }
+            }
+             else
+            {
+                radio3.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+            }
+        }
+        else if (radio4.isSelected()) 
+        {
+            if (option4.equals(correctAnswer))
+            {
+                if (multipleQuestion.getQuestionNumber()== 3)
+                {
+                    mainMenuJButton.setVisible(true);
+                    nextJButton.setVisible(false);
+                    submitJButton.setEnabled(false);
+                    radio1.setEnabled(false);
+                    radio2.setEnabled(false);
+                    radio3.setEnabled(false);
+                    radio4.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
+                    //mainMenuJButton.setVisible(true);
+                    nextJButton.setVisible(true);
+                }
+            }
+             else
+            {
+                radio4.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+            }
+        }
+        
+                
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void mainMenuJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuJButtonActionPerformed
@@ -181,6 +328,32 @@ public class Quiz extends javax.swing.JFrame {
     }//GEN-LAST:event_mainMenuJButtonActionPerformed
 
     private void nextJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextJButtonActionPerformed
+        
+        radio1.setEnabled(true);
+        radio2.setEnabled(true);
+        radio3.setEnabled(true);
+        radio4.setEnabled(true);
+        
+        int currentQuestion = multipleQuestion.getQuestionNumber();
+        multipleQuestion = multipleQuestionsArray.get(currentQuestion);
+        
+        number = multipleQuestion.getQuestionNumber();
+        String questionNumber = multipleQuestion.getQuestionNumber() + "";
+        question = multipleQuestion.getQuestion();
+        option1 = multipleQuestion.getOption1();
+        option2 = multipleQuestion.getOption2();
+        option3 = multipleQuestion.getOption3();
+        option4 = multipleQuestion.getOption4();
+        correctAnswer = multipleQuestion.getCorrectAnswer();
+        
+        questionJLabel.setText(questionNumber + ". " + question);
+        radio1.setText(option1);
+        radio2.setText(option2);
+        radio3.setText(option3);
+        radio4.setText(option4);
+        
+        mainMenuJButton.setVisible(false);
+        nextJButton.setVisible(false);
         
     }//GEN-LAST:event_nextJButtonActionPerformed
 
@@ -225,27 +398,18 @@ public class Quiz extends javax.swing.JFrame {
                
     }
     
-    private void groupButton( ) 
-        {
-
-            ButtonGroup radioButtonGroup = new ButtonGroup( );
-
-            radioButtonGroup.add(option1);
-            radioButtonGroup.add(option2);
-            radioButtonGroup.add(option3);
-            radioButtonGroup.add(option4);
-
-        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imageLabel;
+    private javax.swing.JPanel imagePanel;
     private javax.swing.JButton mainMenuJButton;
     private javax.swing.JButton nextJButton;
-    private javax.swing.JRadioButton option1;
-    private javax.swing.JRadioButton option2;
-    private javax.swing.JRadioButton option3;
-    private javax.swing.JRadioButton option4;
     private javax.swing.ButtonGroup optionGroup;
     private javax.swing.JLabel questionJLabel;
+    private javax.swing.JRadioButton radio1;
+    private javax.swing.JRadioButton radio2;
+    private javax.swing.JRadioButton radio3;
+    private javax.swing.JRadioButton radio4;
     private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables
 }

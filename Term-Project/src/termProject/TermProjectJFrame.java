@@ -135,11 +135,10 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     private void grasslandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grasslandButtonActionPerformed
         // Multiple Choice Questions
         String fileName = "/data/Grasslands.txt";
+        String imageSRC = "C:\\Users\\animalcrackers48\\Documents\\Programming\\MP4\\Term-Project\\Term-Project\\src\\images\\Africa.jpg";
         
         ArrayList<Question> grasslandQuestions = new ArrayList<Question>();
         Question grassland = null;
-        
-        //importQuestionFiles(filename, grasslandQuestions);
         
         try {
             InputStreamReader isr = new InputStreamReader(
@@ -169,7 +168,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         grassland = grasslandQuestions.get(0);
         
-        new Quiz(grasslandQuestions, grassland).setVisible(true);
+        new Quiz(grasslandQuestions, grassland, imageSRC).setVisible(true);
         
         grasslandButton.setEnabled(false);
     }//GEN-LAST:event_grasslandButtonActionPerformed
@@ -177,6 +176,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     private void freshwaterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freshwaterButtonActionPerformed
         // Multiple Choice Questions
         String fileName = "/data/Freshwater.txt";
+        String imageSRC = "C:\\Users\\animalcrackers48\\Documents\\Programming\\MP4\\Term-Project\\Term-Project\\src\\images\\Freshwater.jpg";
         
         ArrayList<Question> freshwaterQuestions = new ArrayList<Question>();
         Question freshwater = null;
@@ -211,7 +211,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         freshwater = freshwaterQuestions.get(0);
         
-        new Quiz(freshwaterQuestions, freshwater).setVisible(true);
+        new Quiz(freshwaterQuestions, freshwater, imageSRC).setVisible(true);
         
         freshwaterButton.setEnabled(false);
     }//GEN-LAST:event_freshwaterButtonActionPerformed
