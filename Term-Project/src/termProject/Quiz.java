@@ -96,7 +96,6 @@ public class Quiz extends javax.swing.JFrame {
         imageLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(864, 439));
         setMinimumSize(new java.awt.Dimension(864, 439));
 
         questionJLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -145,8 +144,6 @@ public class Quiz extends javax.swing.JFrame {
         imagePanel.setMaximumSize(new java.awt.Dimension(529, 416));
         imagePanel.setMinimumSize(new java.awt.Dimension(529, 416));
         imagePanel.setLayout(null);
-
-        imageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         imagePanel.add(imageLabel);
         imageLabel.setBounds(0, 0, 580, 410);
 

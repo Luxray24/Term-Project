@@ -1,0 +1,20 @@
+//Image 1
+Coconut Trees
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\CoconutTrees.jpg
+1
+1
+//Image 2
+Jaguars
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Jaguars.jpg
+4
+4
+//Image 3
+Frogs
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Frog.jpg
+3
+3
+//Image 4
+Grasshoppers
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Grasshopper.jpg
+2
+2

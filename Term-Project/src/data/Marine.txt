@@ -1,0 +1,16 @@
+//Image 1
+Loggerhead Turtle
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\LoggerheadTurtle.jpg
+3
+//Image 2
+Jellyfish
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Jellyfish.jpg
+2
+//Image 3
+Zooplankton
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Zooplankton.jpg
+1
+//Image 4
+Tiger Shark
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\TigerShark.jpg
+4

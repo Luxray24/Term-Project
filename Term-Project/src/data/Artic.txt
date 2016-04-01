@@ -1,0 +1,15 @@
+//Image 1
+Phytoplankton
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Phytoplankton.jpg
+1
+//Image 2
+Leopard Seal
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\LeopardSeal.jpg
+4
+//Image 3
+KrillC:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Krill.jpg
+2
+//Image 4
+Penguin
+C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Penguin.jpg
+3

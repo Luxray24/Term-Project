@@ -5,18 +5,110 @@
  */
 package termProject;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.TransferHandler;
+
 /**
  *
- * @author Mark
+ * @author Mark Swarner, Georgia Snelling
  */
 public class DragDrop extends javax.swing.JFrame {
+    
+    public boolean isPicSelected = false;
+    public boolean isLevelSelected = false;
+    private Component currentPicture = null; //referance to an active label
+    private Component currentPicturePlacement = null; //reference to the pic dest.
+    public int picNumber;
+    public Icon myIcon;
 
+
+    ArrayList<DragImage> imageDragDrop = new ArrayList<DragImage>();
+    DragImage imageObject = null;
+    
     /**
      * Creates new form gameJFrame
      */
-    public DragDrop() {
+    public DragDrop(ArrayList array, DragImage imageDrag) {
         initComponents();
-    }
+        
+        image1Label1.setText("");
+        image2Label2.setText("");
+        image3Label3.setText("");
+        image4Label4.setText("");
+               
+        imageDragDrop = array;
+        imageObject = imageDrag;
+
+        imageObject = imageDragDrop.get(0);
+        image1Label.setIcon(new ImageIcon(imageObject.getImageFileName()));
+        image1Label.setText(imageObject.getImageName());
+        
+        imageObject = imageDragDrop.get(1);
+        image2Label.setIcon(new ImageIcon(imageObject.getImageFileName()));
+        image2Label.setText(imageObject.getImageName());
+        
+        imageObject = imageDragDrop.get(2);
+        image3Label.setIcon(new ImageIcon(imageObject.getImageFileName()));
+        image3Label.setText(imageObject.getImageName());
+        
+        imageObject = imageDragDrop.get(3);
+        image4Label.setIcon(new ImageIcon(imageObject.getImageFileName()));
+        image4Label.setText(imageObject.getImageName());
+       
+        
+        MouseListener ml = new MouseListener() 
+        { 
+            @Override public void mouseClicked(MouseEvent e) {} 
+            @Override public void mousePressed(MouseEvent e) { 
+                JComponent jc = (JComponent)e.getSource();
+                TransferHandler th = jc.getTransferHandler();
+                th.exportAsDrag(jc, e, TransferHandler.COPY); 
+            } 
+            @Override public void mouseReleased(MouseEvent e) {} 
+            @Override public void mouseEntered(MouseEvent e) {} 
+            @Override public void mouseExited(MouseEvent e) {} 
+        };
+        
+        image1Label.addMouseListener(ml); 
+        image2Label.addMouseListener(ml);
+        image3Label.addMouseListener(ml);
+        image4Label.addMouseListener(ml);
+        image1Label1.addMouseListener(ml); 
+        image2Label2.addMouseListener(ml);
+        image3Label3.addMouseListener(ml);
+        
+//        image1Label.setTransferHandler(new TransferHandler("text")); 
+//        image2Label.setTransferHandler(new TransferHandler("text"));
+//        image3Label.setTransferHandler(new TransferHandler("text"));
+//        image4Label.setTransferHandler(new TransferHandler("text"));
+//        image1Label1.setTransferHandler(new TransferHandler("text")); 
+//        image2Label2.setTransferHandler(new TransferHandler("text"));
+//        image3Label3.setTransferHandler(new TransferHandler("text"));
+//        image4Label4.setTransferHandler(new TransferHandler("text"));
+        
+        image1Label.setTransferHandler(new TransferHandler("icon")); 
+        image2Label.setTransferHandler(new TransferHandler("icon"));
+        image3Label.setTransferHandler(new TransferHandler("icon"));
+        image4Label.setTransferHandler(new TransferHandler("icon"));
+        image1Label1.setTransferHandler(new TransferHandler("icon")); 
+        image2Label2.setTransferHandler(new TransferHandler("icon"));
+        image3Label3.setTransferHandler(new TransferHandler("icon"));
+        image4Label4.setTransferHandler(new TransferHandler("icon"));
+        
+        
+        setLayout(null); 
+        setSize(500,500); 
+        setLocationRelativeTo(null); 
+        setDefaultCloseOperation(DragDrop.EXIT_ON_CLOSE); 
+        setVisible(true); 
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,22 +119,260 @@ public class DragDrop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        image1Panel = new javax.swing.JPanel();
+        image1Label = new javax.swing.JLabel();
+        image2Panel = new javax.swing.JPanel();
+        image2Label = new javax.swing.JLabel();
+        image3Panel = new javax.swing.JPanel();
+        image3Label = new javax.swing.JLabel();
+        image4Panel = new javax.swing.JPanel();
+        image4Label = new javax.swing.JLabel();
+        image1Panel1 = new javax.swing.JPanel();
+        image1Label1 = new javax.swing.JLabel();
+        image2Panel1 = new javax.swing.JPanel();
+        image2Label2 = new javax.swing.JLabel();
+        image3Panel1 = new javax.swing.JPanel();
+        image3Label3 = new javax.swing.JLabel();
+        image4Panel1 = new javax.swing.JPanel();
+        image4Label4 = new javax.swing.JLabel();
+        submitButton = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        resetButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1161, 662));
+
+        image1Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        image1Panel.setMaximumSize(new java.awt.Dimension(102, 102));
+        image1Panel.setMinimumSize(new java.awt.Dimension(102, 102));
+        image1Panel.setLayout(null);
+
+        image1Label.setText("jLabel1");
+        image1Label.setMaximumSize(new java.awt.Dimension(102, 102));
+        image1Label.setMinimumSize(new java.awt.Dimension(102, 102));
+        image1Label.setPreferredSize(new java.awt.Dimension(102, 102));
+        image1Panel.add(image1Label);
+        image1Label.setBounds(0, 0, 180, 160);
+
+        image2Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        image2Panel.setLayout(null);
+
+        image2Label.setText("jLabel4");
+        image2Panel.add(image2Label);
+        image2Label.setBounds(0, 0, 180, 160);
+
+        image3Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        image3Panel.setMaximumSize(new java.awt.Dimension(102, 102));
+        image3Panel.setMinimumSize(new java.awt.Dimension(102, 102));
+        image3Panel.setPreferredSize(new java.awt.Dimension(102, 102));
+        image3Panel.setLayout(null);
+
+        image3Label.setText("jLabel2");
+        image3Panel.add(image3Label);
+        image3Label.setBounds(0, 0, 180, 160);
+
+        image4Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        image4Panel.setLayout(null);
+
+        image4Label.setText("jLabel3");
+        image4Panel.add(image4Label);
+        image4Label.setBounds(0, 0, 180, 160);
+
+        image1Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        image1Panel1.setMaximumSize(new java.awt.Dimension(102, 102));
+        image1Panel1.setMinimumSize(new java.awt.Dimension(102, 102));
+        image1Panel1.setLayout(null);
+
+        image1Label1.setText("jLabel1");
+        image1Label1.setMaximumSize(new java.awt.Dimension(102, 102));
+        image1Label1.setMinimumSize(new java.awt.Dimension(102, 102));
+        image1Label1.setPreferredSize(new java.awt.Dimension(102, 102));
+        image1Panel1.add(image1Label1);
+        image1Label1.setBounds(0, 0, 180, 160);
+
+        image2Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        image2Panel1.setLayout(null);
+
+        image2Label2.setText("jLabel4");
+        image2Label2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                image2Label2MouseReleased(evt);
+            }
+        });
+        image2Panel1.add(image2Label2);
+        image2Label2.setBounds(0, 0, 180, 160);
+
+        image3Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        image3Panel1.setMaximumSize(new java.awt.Dimension(102, 102));
+        image3Panel1.setMinimumSize(new java.awt.Dimension(102, 102));
+        image3Panel1.setLayout(null);
+
+        image3Label3.setText("jLabel2");
+        image3Panel1.add(image3Label3);
+        image3Label3.setBounds(0, 0, 180, 160);
+
+        image4Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        image4Panel1.setLayout(null);
+
+        image4Label4.setText("jLabel3");
+        image4Panel1.add(image4Label4);
+        image4Label4.setBounds(0, 0, 180, 160);
+
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
+
+        titleLabel.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLabel.setText("Who Eats What?!");
+
+        jLabel1.setText("--------->");
+
+        jLabel2.setText("--------->");
+
+        jLabel3.setText("--------->");
+
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(image1Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(image3Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addGap(38, 38, 38)
+                                .addComponent(image4Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3)
+                                .addGap(35, 35, 35)
+                                .addComponent(image2Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(image1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(resetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(image3Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(image4Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                        .addGap(89, 89, 89)
+                        .addComponent(image2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(image3Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(image1Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(image4Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(image2Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(image3Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(image1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(image4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(image2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(submitButton)
+                    .addComponent(resetButton))
+                .addGap(88, 88, 88))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        // TODO add your handling code here:
+        
+        imageObject = imageDragDrop.get(0);
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
+        if (image1Label1.getIcon().equals(imageObject.getIcon()))
+        {
+            image1Label1.setEnabled(false);
+            image1Label1.addMouseListener(null);
+            image1Label1.setTransferHandler(null); 
+        }
+        else
+        {
+            image1Label1.setIcon(null);
+        }
+        
+        
+        
+//        imageObject = imageDragDrop.get(0);
+//        if (image1Label1.getText().equals(imageObject.getActualAnimal()))
+//        {
+//            image1Label1.setEnabled(false);
+//            image1Label1.addMouseListener(null);
+//            image1Label1.setTransferHandler(null); 
+//        }
+//        else
+//        {
+//            image1Label1.setIcon(null);
+//        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        // TODO add your handling code here:
+        
+        image1Label1.setIcon(null);
+        image2Label2.setIcon(null);
+        image3Label3.setIcon(null);
+        image4Label4.setIcon(null);
+        
+    }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void image2Label2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_image2Label2MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_image2Label2MouseReleased
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -76,11 +406,33 @@ public class DragDrop extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DragDrop().setVisible(true);
+                //new DragDrop().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel image1Label;
+    private javax.swing.JLabel image1Label1;
+    private javax.swing.JPanel image1Panel;
+    private javax.swing.JPanel image1Panel1;
+    private javax.swing.JLabel image2Label;
+    private javax.swing.JLabel image2Label2;
+    private javax.swing.JPanel image2Panel;
+    private javax.swing.JPanel image2Panel1;
+    private javax.swing.JLabel image3Label;
+    private javax.swing.JLabel image3Label3;
+    private javax.swing.JPanel image3Panel;
+    private javax.swing.JPanel image3Panel1;
+    private javax.swing.JLabel image4Label;
+    private javax.swing.JLabel image4Label4;
+    private javax.swing.JPanel image4Panel;
+    private javax.swing.JPanel image4Panel1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JButton submitButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

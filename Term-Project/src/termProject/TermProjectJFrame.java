@@ -59,7 +59,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
             }
         });
         gamePanel.add(articButton);
-        articButton.setBounds(580, 20, 180, 80);
+        articButton.setBounds(570, 30, 180, 80);
 
         marineButton.setText("Marine Ecosystem");
         marineButton.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +68,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
             }
         });
         gamePanel.add(marineButton);
-        marineButton.setBounds(1120, 290, 170, 90);
+        marineButton.setBounds(1110, 300, 170, 90);
 
         rainforestButton.setText("Rainforest Ecosystem");
         rainforestButton.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +77,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
             }
         });
         gamePanel.add(rainforestButton);
-        rainforestButton.setBounds(230, 490, 200, 50);
+        rainforestButton.setBounds(240, 490, 200, 50);
 
         grasslandButton.setText("Grassland Ecosystem");
         grasslandButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +86,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
             }
         });
         gamePanel.add(grasslandButton);
-        grasslandButton.setBounds(560, 370, 160, 50);
+        grasslandButton.setBounds(550, 370, 160, 50);
 
         freshwaterButton.setText("Freshwater Ecosystem");
         freshwaterButton.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +95,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
             }
         });
         gamePanel.add(freshwaterButton);
-        freshwaterButton.setBounds(140, 190, 210, 50);
+        freshwaterButton.setBounds(130, 190, 210, 50);
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Map.jpg"))); // NOI18N
         gamePanel.add(backgroundImage);
@@ -129,6 +129,38 @@ public class TermProjectJFrame extends javax.swing.JFrame {
 
     private void rainforestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rainforestButtonActionPerformed
         // TODO add your handling code here:
+        String fileName = "/data/Rainforest.txt";
+        
+        ArrayList<DragImage> rainforestDrag = new ArrayList<DragImage>();
+        DragImage rainforest = null;
+        
+        try {
+            InputStreamReader isr = new InputStreamReader(
+                    this.getClass().getResourceAsStream(fileName));
+            BufferedReader br = new BufferedReader(isr);
+            while (true) {
+                String comment = br.readLine();
+                if (comment == null) {
+                    break;
+                }
+                
+                String animalName = br.readLine();
+                String pictureFileName = br.readLine();
+                int imageOrder = Integer.parseInt(br.readLine());
+                int actualNameInThatPlace = Integer.parseInt(br.readLine());
+                
+                DragImage newDrag = new DragImage(animalName, pictureFileName, imageOrder, actualNameInThatPlace);
+                rainforestDrag.add(newDrag);
+            }
+        } catch (IOException e) {
+
+        }
+        
+        rainforest = rainforestDrag.get(0);
+                
+        new DragDrop(rainforestDrag, rainforest).setVisible(true);
+        
+        rainforestButton.setEnabled(false);
         
     }//GEN-LAST:event_rainforestButtonActionPerformed
 
@@ -249,31 +281,6 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                 new TermProjectJFrame().setVisible(true);
             }
         });
-    }
-    
-    public void importDragFiles( String fileName ) {
-        try {
-            InputStreamReader isr = new InputStreamReader(
-                    this.getClass().getResourceAsStream(fileName));
-            BufferedReader br = new BufferedReader(isr);
-            for (int i = 0; i < 2; i++) {
-                String comment = br.readLine();
-                if (comment == null) {
-                    break;
-                }
-                
-                String option1 = br.readLine();
-                String option2 = br.readLine();
-                String option3 = br.readLine();
-                String option4 = br.readLine();
-                String correctAnswer = br.readLine();
-                if (i == 1) {
-                    br.close();
-                }
-            }
-        } catch (IOException e) {
-
-        }
     }
  
     
