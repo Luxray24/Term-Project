@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-//Link to the site for randomising options: http://www.tutorialspoint.com/java/util/collections_shuffle.htm
 
 package termProject;
 

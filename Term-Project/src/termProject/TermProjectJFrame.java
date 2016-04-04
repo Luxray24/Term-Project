@@ -119,11 +119,79 @@ public class TermProjectJFrame extends javax.swing.JFrame {
 
     private void articButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articButtonActionPerformed
         // TODO add your handling code here:
+        String fileName = "/data/Artic.txt";
+        
+        ArrayList<DragImage> articDrag = new ArrayList<DragImage>();
+        DragImage artic = null;
+        
+        try {
+            InputStreamReader isr = new InputStreamReader(
+                    this.getClass().getResourceAsStream(fileName));
+            BufferedReader br = new BufferedReader(isr);
+            while (true) {
+                String comment = br.readLine();
+                if (comment == null) {
+                    break;
+                }
+                
+                int initialPlace = Integer.parseInt(br.readLine());
+                String animalName = br.readLine();
+                String pictureFileName = br.readLine();
+                int imageOrder = Integer.parseInt(br.readLine());
+                int actualNameInThatPlace = Integer.parseInt(br.readLine());
+                
+                DragImage newDrag = new DragImage(initialPlace, animalName, pictureFileName, imageOrder, actualNameInThatPlace);
+                articDrag.add(newDrag);
+            }
+        } catch (IOException e) {
+
+        }
+        
+        artic = articDrag.get(0);
+                
+        new DragDrop(articDrag, artic).setVisible(true);
+        
+        articButton.setEnabled(false);
+        
         
     }//GEN-LAST:event_articButtonActionPerformed
 
     private void marineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marineButtonActionPerformed
         // TODO add your handling code here:
+        String fileName = "/data/Marine.txt";
+        
+        ArrayList<DragImage> marineDrag = new ArrayList<DragImage>();
+        DragImage marine = null;
+        
+        try {
+            InputStreamReader isr = new InputStreamReader(
+                    this.getClass().getResourceAsStream(fileName));
+            BufferedReader br = new BufferedReader(isr);
+            while (true) {
+                String comment = br.readLine();
+                if (comment == null) {
+                    break;
+                }
+                
+                int initialPlace = Integer.parseInt(br.readLine());
+                String animalName = br.readLine();
+                String pictureFileName = br.readLine();
+                int imageOrder = Integer.parseInt(br.readLine());
+                int actualNameInThatPlace = Integer.parseInt(br.readLine());
+                
+                DragImage newDrag = new DragImage(initialPlace, animalName, pictureFileName, imageOrder, actualNameInThatPlace);
+                marineDrag.add(newDrag);
+            }
+        } catch (IOException e) {
+
+        }
+        
+        marine = marineDrag.get(0);
+                
+        new DragDrop(marineDrag, marine).setVisible(true);
+        
+        marineButton.setEnabled(false);
+        
         
     }//GEN-LAST:event_marineButtonActionPerformed
 
@@ -144,12 +212,13 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                     break;
                 }
                 
+                int initialPlace = Integer.parseInt(br.readLine());
                 String animalName = br.readLine();
                 String pictureFileName = br.readLine();
                 int imageOrder = Integer.parseInt(br.readLine());
                 int actualNameInThatPlace = Integer.parseInt(br.readLine());
                 
-                DragImage newDrag = new DragImage(animalName, pictureFileName, imageOrder, actualNameInThatPlace);
+                DragImage newDrag = new DragImage(initialPlace, animalName, pictureFileName, imageOrder, actualNameInThatPlace);
                 rainforestDrag.add(newDrag);
             }
         } catch (IOException e) {

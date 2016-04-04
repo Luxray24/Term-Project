@@ -26,6 +26,7 @@ public class DragImage {
   static int imageWidth = 60, imageHeight = 60;
   int imageX, imageY;
   
+  private int place;
   private String name;
   private String imageSRC;
   private int orderNumber;
@@ -33,8 +34,9 @@ public class DragImage {
 
   Image image;
 
-  public DragImage(String name, String imageSRC, int orderNumber, int actualAnimal) {
+  public DragImage(int place, String name, String imageSRC, int orderNumber, int actualAnimal) {
     
+    this.place = place;
     this.name = name;
     this.imageSRC = imageSRC;
     this.orderNumber = orderNumber;
@@ -42,6 +44,11 @@ public class DragImage {
 
     //image = i;
     //addMouseMotionListener(this);
+  }
+  
+  public int getInitialPlace()
+  {
+      return place;
   }
   
   public String getImageName()

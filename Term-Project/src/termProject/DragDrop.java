@@ -13,7 +13,10 @@ import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 import javax.swing.TransferHandler;
+import javax.swing.border.LineBorder;
+import javax.swing.border.SoftBevelBorder;
 
 /**
  *
@@ -21,46 +24,58 @@ import javax.swing.TransferHandler;
  */
 public class DragDrop extends javax.swing.JFrame {
     
-    public boolean isPicSelected = false;
-    public boolean isLevelSelected = false;
-    private Component currentPicture = null; //referance to an active label
-    private Component currentPicturePlacement = null; //reference to the pic dest.
-    public int picNumber;
-    public Icon myIcon;
-
-
+    
     ArrayList<DragImage> imageDragDrop = new ArrayList<DragImage>();
     DragImage imageObject = null;
+    
+    int points;
+    int tilesCorrect;
     
     /**
      * Creates new form gameJFrame
      */
     public DragDrop(ArrayList array, DragImage imageDrag) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        mainMenuButton.setVisible(false);
         
-        image1Label1.setText("");
-        image2Label2.setText("");
-        image3Label3.setText("");
-        image4Label4.setText("");
+        
+              
+        endingImage1.setText("");
+        endingImage2.setText("");
+        endingImage3.setText("");
+        endingImage4.setText("");
+        
                
         imageDragDrop = array;
         imageObject = imageDrag;
 
-        imageObject = imageDragDrop.get(0);
-        image1Label.setIcon(new ImageIcon(imageObject.getImageFileName()));
-        image1Label.setText(imageObject.getImageName());
         
-        imageObject = imageDragDrop.get(1);
-        image2Label.setIcon(new ImageIcon(imageObject.getImageFileName()));
-        image2Label.setText(imageObject.getImageName());
-        
-        imageObject = imageDragDrop.get(2);
-        image3Label.setIcon(new ImageIcon(imageObject.getImageFileName()));
-        image3Label.setText(imageObject.getImageName());
-        
-        imageObject = imageDragDrop.get(3);
-        image4Label.setIcon(new ImageIcon(imageObject.getImageFileName()));
-        image4Label.setText(imageObject.getImageName());
+        for (int i = 0; i < 4; i ++)
+        {
+            imageObject = imageDragDrop.get(i);
+            int place = imageObject.getInitialPlace();
+            if (place == 1)
+            {
+                startingImage1.setIcon(new ImageIcon(imageObject.getImageFileName()));
+                startingImage1.setText(imageObject.getImageName());
+            }
+            else if (place == 2)
+            {
+                startingImage2.setIcon(new ImageIcon(imageObject.getImageFileName()));
+                startingImage2.setText(imageObject.getImageName());
+            }
+            else if (place == 3)
+            {
+                startingImage3.setIcon(new ImageIcon(imageObject.getImageFileName()));
+                startingImage3.setText(imageObject.getImageName());
+            }
+            else if (place == 4)
+            {
+                startingImage4.setIcon(new ImageIcon(imageObject.getImageFileName()));
+                startingImage4.setText(imageObject.getImageName());
+            }
+        }
        
         
         MouseListener ml = new MouseListener() 
@@ -76,31 +91,22 @@ public class DragDrop extends javax.swing.JFrame {
             @Override public void mouseExited(MouseEvent e) {} 
         };
         
-        image1Label.addMouseListener(ml); 
-        image2Label.addMouseListener(ml);
-        image3Label.addMouseListener(ml);
-        image4Label.addMouseListener(ml);
-        image1Label1.addMouseListener(ml); 
-        image2Label2.addMouseListener(ml);
-        image3Label3.addMouseListener(ml);
         
-//        image1Label.setTransferHandler(new TransferHandler("text")); 
-//        image2Label.setTransferHandler(new TransferHandler("text"));
-//        image3Label.setTransferHandler(new TransferHandler("text"));
-//        image4Label.setTransferHandler(new TransferHandler("text"));
-//        image1Label1.setTransferHandler(new TransferHandler("text")); 
-//        image2Label2.setTransferHandler(new TransferHandler("text"));
-//        image3Label3.setTransferHandler(new TransferHandler("text"));
-//        image4Label4.setTransferHandler(new TransferHandler("text"));
+        startingImage1.addMouseListener(ml); 
+        startingImage2.addMouseListener(ml);
+        startingImage3.addMouseListener(ml);
+        startingImage4.addMouseListener(ml);
         
-        image1Label.setTransferHandler(new TransferHandler("icon")); 
-        image2Label.setTransferHandler(new TransferHandler("icon"));
-        image3Label.setTransferHandler(new TransferHandler("icon"));
-        image4Label.setTransferHandler(new TransferHandler("icon"));
-        image1Label1.setTransferHandler(new TransferHandler("icon")); 
-        image2Label2.setTransferHandler(new TransferHandler("icon"));
-        image3Label3.setTransferHandler(new TransferHandler("icon"));
-        image4Label4.setTransferHandler(new TransferHandler("icon"));
+        
+        startingImage1.setTransferHandler(new TransferHandler("text")); 
+        startingImage4.setTransferHandler(new TransferHandler("text"));
+        startingImage2.setTransferHandler(new TransferHandler("text"));
+        startingImage3.setTransferHandler(new TransferHandler("text"));
+                
+        endingImage1.setTransferHandler(new TransferHandler("text")); 
+        endingImage2.setTransferHandler(new TransferHandler("text"));
+        endingImage3.setTransferHandler(new TransferHandler("text"));
+        endingImage4.setTransferHandler(new TransferHandler("text"));      
         
         
         setLayout(null); 
@@ -119,107 +125,115 @@ public class DragDrop extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        image1Panel = new javax.swing.JPanel();
-        image1Label = new javax.swing.JLabel();
-        image2Panel = new javax.swing.JPanel();
-        image2Label = new javax.swing.JLabel();
-        image3Panel = new javax.swing.JPanel();
-        image3Label = new javax.swing.JLabel();
-        image4Panel = new javax.swing.JPanel();
-        image4Label = new javax.swing.JLabel();
-        image1Panel1 = new javax.swing.JPanel();
-        image1Label1 = new javax.swing.JLabel();
-        image2Panel1 = new javax.swing.JPanel();
-        image2Label2 = new javax.swing.JLabel();
-        image3Panel1 = new javax.swing.JPanel();
-        image3Label3 = new javax.swing.JLabel();
-        image4Panel1 = new javax.swing.JPanel();
-        image4Label4 = new javax.swing.JLabel();
+        panel1 = new javax.swing.JPanel();
+        startingImage1 = new javax.swing.JLabel();
+        panel2 = new javax.swing.JPanel();
+        startingImage2 = new javax.swing.JLabel();
+        panel3 = new javax.swing.JPanel();
+        startingImage3 = new javax.swing.JLabel();
+        panel4 = new javax.swing.JPanel();
+        startingImage4 = new javax.swing.JLabel();
+        panel5 = new javax.swing.JPanel();
+        endingImage1 = new javax.swing.JLabel();
+        panel6 = new javax.swing.JPanel();
+        endingImage2 = new javax.swing.JLabel();
+        panel7 = new javax.swing.JPanel();
+        endingImage3 = new javax.swing.JLabel();
+        panel8 = new javax.swing.JPanel();
+        endingImage4 = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         titleLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        resetButton = new javax.swing.JButton();
+        eat1 = new javax.swing.JLabel();
+        eat2 = new javax.swing.JLabel();
+        eat3 = new javax.swing.JLabel();
+        mainMenuButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1161, 662));
 
-        image1Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        image1Panel.setMaximumSize(new java.awt.Dimension(102, 102));
-        image1Panel.setMinimumSize(new java.awt.Dimension(102, 102));
-        image1Panel.setLayout(null);
+        panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel1.setMaximumSize(new java.awt.Dimension(102, 102));
+        panel1.setMinimumSize(new java.awt.Dimension(102, 102));
+        panel1.setLayout(null);
 
-        image1Label.setText("jLabel1");
-        image1Label.setMaximumSize(new java.awt.Dimension(102, 102));
-        image1Label.setMinimumSize(new java.awt.Dimension(102, 102));
-        image1Label.setPreferredSize(new java.awt.Dimension(102, 102));
-        image1Panel.add(image1Label);
-        image1Label.setBounds(0, 0, 180, 160);
+        startingImage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        startingImage1.setText("jLabel1");
+        startingImage1.setMaximumSize(new java.awt.Dimension(102, 102));
+        startingImage1.setMinimumSize(new java.awt.Dimension(102, 102));
+        startingImage1.setPreferredSize(new java.awt.Dimension(102, 102));
+        panel1.add(startingImage1);
+        startingImage1.setBounds(0, 0, 180, 160);
 
-        image2Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        image2Panel.setLayout(null);
+        panel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel2.setMaximumSize(new java.awt.Dimension(102, 102));
+        panel2.setMinimumSize(new java.awt.Dimension(102, 102));
+        panel2.setPreferredSize(new java.awt.Dimension(102, 102));
+        panel2.setLayout(null);
 
-        image2Label.setText("jLabel4");
-        image2Panel.add(image2Label);
-        image2Label.setBounds(0, 0, 180, 160);
+        startingImage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        startingImage2.setText("jLabel2");
+        panel2.add(startingImage2);
+        startingImage2.setBounds(0, 0, 180, 160);
 
-        image3Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        image3Panel.setMaximumSize(new java.awt.Dimension(102, 102));
-        image3Panel.setMinimumSize(new java.awt.Dimension(102, 102));
-        image3Panel.setPreferredSize(new java.awt.Dimension(102, 102));
-        image3Panel.setLayout(null);
+        panel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel3.setLayout(null);
 
-        image3Label.setText("jLabel2");
-        image3Panel.add(image3Label);
-        image3Label.setBounds(0, 0, 180, 160);
+        startingImage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        startingImage3.setText("jLabel3");
+        panel3.add(startingImage3);
+        startingImage3.setBounds(0, 0, 180, 160);
 
-        image4Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        image4Panel.setLayout(null);
+        panel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel4.setLayout(null);
 
-        image4Label.setText("jLabel3");
-        image4Panel.add(image4Label);
-        image4Label.setBounds(0, 0, 180, 160);
+        startingImage4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        startingImage4.setText("jLabel4");
+        panel4.add(startingImage4);
+        startingImage4.setBounds(0, 0, 180, 160);
 
-        image1Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        image1Panel1.setMaximumSize(new java.awt.Dimension(102, 102));
-        image1Panel1.setMinimumSize(new java.awt.Dimension(102, 102));
-        image1Panel1.setLayout(null);
+        panel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel5.setMaximumSize(new java.awt.Dimension(102, 102));
+        panel5.setMinimumSize(new java.awt.Dimension(102, 102));
+        panel5.setLayout(null);
 
-        image1Label1.setText("jLabel1");
-        image1Label1.setMaximumSize(new java.awt.Dimension(102, 102));
-        image1Label1.setMinimumSize(new java.awt.Dimension(102, 102));
-        image1Label1.setPreferredSize(new java.awt.Dimension(102, 102));
-        image1Panel1.add(image1Label1);
-        image1Label1.setBounds(0, 0, 180, 160);
+        endingImage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        endingImage1.setText("jLabel1");
+        endingImage1.setMaximumSize(new java.awt.Dimension(102, 102));
+        endingImage1.setMinimumSize(new java.awt.Dimension(102, 102));
+        endingImage1.setPreferredSize(new java.awt.Dimension(102, 102));
+        panel5.add(endingImage1);
+        endingImage1.setBounds(0, 0, 180, 160);
 
-        image2Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        image2Panel1.setLayout(null);
+        panel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel6.setMaximumSize(new java.awt.Dimension(102, 102));
+        panel6.setMinimumSize(new java.awt.Dimension(102, 102));
+        panel6.setLayout(null);
 
-        image2Label2.setText("jLabel4");
-        image2Label2.addMouseListener(new java.awt.event.MouseAdapter() {
+        endingImage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        endingImage2.setText("jLabel2");
+        panel6.add(endingImage2);
+        endingImage2.setBounds(0, 0, 180, 160);
+
+        panel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel7.setLayout(null);
+
+        endingImage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        endingImage3.setText("jLabel3");
+        panel7.add(endingImage3);
+        endingImage3.setBounds(0, 0, 180, 160);
+
+        panel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel8.setLayout(null);
+
+        endingImage4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        endingImage4.setText("jLabel4");
+        endingImage4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                image2Label2MouseReleased(evt);
+                endingImage4MouseReleased(evt);
             }
         });
-        image2Panel1.add(image2Label2);
-        image2Label2.setBounds(0, 0, 180, 160);
-
-        image3Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        image3Panel1.setMaximumSize(new java.awt.Dimension(102, 102));
-        image3Panel1.setMinimumSize(new java.awt.Dimension(102, 102));
-        image3Panel1.setLayout(null);
-
-        image3Label3.setText("jLabel2");
-        image3Panel1.add(image3Label3);
-        image3Label3.setBounds(0, 0, 180, 160);
-
-        image4Panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        image4Panel1.setLayout(null);
-
-        image4Label4.setText("jLabel3");
-        image4Panel1.add(image4Label4);
-        image4Label4.setBounds(0, 0, 180, 160);
+        panel8.add(endingImage4);
+        endingImage4.setBounds(0, 0, 180, 160);
 
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -232,16 +246,16 @@ public class DragDrop extends javax.swing.JFrame {
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleLabel.setText("Who Eats What?!");
 
-        jLabel1.setText("--------->");
+        eat1.setText("Gets Eaten By");
 
-        jLabel2.setText("--------->");
+        eat2.setText("Gets Eaten By");
 
-        jLabel3.setText("--------->");
+        eat3.setText("Gets Eaten By");
 
-        resetButton.setText("Reset");
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
+        mainMenuButton.setText("<< Main Menu");
+        mainMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
+                mainMenuButtonActionPerformed(evt);
             }
         });
 
@@ -253,35 +267,37 @@ public class DragDrop extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(image1Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(32, 32, 32)
+                        .addComponent(panel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eat1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(image3Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addGap(38, 38, 38)
-                                .addComponent(image4Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3)
-                                .addGap(35, 35, 35)
-                                .addComponent(image2Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(panel6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eat2)
+                                .addGap(32, 32, 32)
+                                .addComponent(panel7, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eat3)
+                                .addGap(16, 16, 16)
+                                .addComponent(panel8, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(image1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(resetButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(image3Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(image4Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
+                            .addComponent(panel3, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
                         .addGap(89, 89, 89)
-                        .addComponent(image2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(195, Short.MAX_VALUE))
+                        .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,32 +306,35 @@ public class DragDrop extends javax.swing.JFrame {
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(image3Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(image1Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(image4Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(image2Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
-                        .addComponent(jLabel1))
+                        .addComponent(eat1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(image3Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(image1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(image4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(image2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitButton)
-                    .addComponent(resetButton))
-                .addGap(88, 88, 88))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(panel6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(panel5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(panel7, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(panel8, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(eat2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(eat3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(submitButton)
+                            .addComponent(mainMenuButton))
+                        .addGap(88, 88, 88))))
         );
 
         pack();
@@ -326,50 +345,103 @@ public class DragDrop extends javax.swing.JFrame {
         
         imageObject = imageDragDrop.get(0);
         imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
-        if (image1Label1.getIcon().equals(imageObject.getIcon()))
+        if (endingImage1.getText() == imageObject.getImageName())
         {
-            image1Label1.setEnabled(false);
-            image1Label1.addMouseListener(null);
-            image1Label1.setTransferHandler(null); 
+           
+            endingImage1.setIcon(new ImageIcon(imageObject.getImageFileName()));
+            endingImage1.setBorder(new LineBorder(Color.black, 5));
+            endingImage1.addMouseListener(null);
+            endingImage1.setTransferHandler(null); 
+            tilesCorrect += 1;
+            points += 25;
         }
         else
         {
-            image1Label1.setIcon(null);
+            endingImage1.setText(null);
         }
         
         
         
-//        imageObject = imageDragDrop.get(0);
-//        if (image1Label1.getText().equals(imageObject.getActualAnimal()))
-//        {
-//            image1Label1.setEnabled(false);
-//            image1Label1.addMouseListener(null);
-//            image1Label1.setTransferHandler(null); 
-//        }
-//        else
-//        {
-//            image1Label1.setIcon(null);
-//        }
+        imageObject = imageDragDrop.get(1);
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
+        if (endingImage2.getText() == imageObject.getImageName())
+        {
+           
+            endingImage2.setIcon(new ImageIcon(imageObject.getImageFileName()));
+            endingImage2.setBorder(new LineBorder(Color.black, 5));
+            endingImage2.addMouseListener(null);
+            endingImage2.setTransferHandler(null); 
+            tilesCorrect += 1;
+            points += 25;
+        }
+        else
+        {
+            endingImage2.setText(null);
+        }
         
         
         
+        imageObject = imageDragDrop.get(2);
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
+        if (endingImage3.getText() == imageObject.getImageName())
+        {
+           
+            endingImage3.setIcon(new ImageIcon(imageObject.getImageFileName()));
+            endingImage3.setBorder(new LineBorder(Color.black, 5));
+            endingImage3.addMouseListener(null);
+            endingImage3.setTransferHandler(null); 
+            tilesCorrect += 1;
+            points += 25;
+        }
+        else
+        {
+            endingImage3.setText(null);
+        }
         
+        
+        
+        imageObject = imageDragDrop.get(3);
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
+        if (endingImage4.getText() == imageObject.getImageName())
+        {
+           
+            endingImage4.setIcon(new ImageIcon(imageObject.getImageFileName()));
+            endingImage4.setBorder(new LineBorder(Color.black, 5));
+            endingImage4.addMouseListener(null);
+            endingImage4.setTransferHandler(null);
+            tilesCorrect += 1;
+            points += 25;
+        }
+        else
+        {
+            endingImage4.setText(null);
+        }
+        
+        
+        if(tilesCorrect == 4)
+        {
+            JOptionPane.showMessageDialog(null, "Congrats!  You got the food web correct!  Go back to the Main Map to choose another game!");
+            mainMenuButton.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Oops.  Looks like one of those were not placed in the correct spot.  Please try again.");
+        }
+        
+               
         
     }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+    private void endingImage4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_endingImage4MouseReleased
         // TODO add your handling code here:
-        
-        image1Label1.setIcon(null);
-        image2Label2.setIcon(null);
-        image3Label3.setIcon(null);
-        image4Label4.setIcon(null);
-        
-    }//GEN-LAST:event_resetButtonActionPerformed
+    }//GEN-LAST:event_endingImage4MouseReleased
 
-    private void image2Label2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_image2Label2MouseReleased
+    private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_image2Label2MouseReleased
+        
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_mainMenuButtonActionPerformed
 
     
     
@@ -412,26 +484,26 @@ public class DragDrop extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel image1Label;
-    private javax.swing.JLabel image1Label1;
-    private javax.swing.JPanel image1Panel;
-    private javax.swing.JPanel image1Panel1;
-    private javax.swing.JLabel image2Label;
-    private javax.swing.JLabel image2Label2;
-    private javax.swing.JPanel image2Panel;
-    private javax.swing.JPanel image2Panel1;
-    private javax.swing.JLabel image3Label;
-    private javax.swing.JLabel image3Label3;
-    private javax.swing.JPanel image3Panel;
-    private javax.swing.JPanel image3Panel1;
-    private javax.swing.JLabel image4Label;
-    private javax.swing.JLabel image4Label4;
-    private javax.swing.JPanel image4Panel;
-    private javax.swing.JPanel image4Panel1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JButton resetButton;
+    private javax.swing.JLabel eat1;
+    private javax.swing.JLabel eat2;
+    private javax.swing.JLabel eat3;
+    private javax.swing.JLabel endingImage1;
+    private javax.swing.JLabel endingImage2;
+    private javax.swing.JLabel endingImage3;
+    private javax.swing.JLabel endingImage4;
+    private javax.swing.JButton mainMenuButton;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JPanel panel2;
+    private javax.swing.JPanel panel3;
+    private javax.swing.JPanel panel4;
+    private javax.swing.JPanel panel5;
+    private javax.swing.JPanel panel6;
+    private javax.swing.JPanel panel7;
+    private javax.swing.JPanel panel8;
+    private javax.swing.JLabel startingImage1;
+    private javax.swing.JLabel startingImage2;
+    private javax.swing.JLabel startingImage3;
+    private javax.swing.JLabel startingImage4;
     private javax.swing.JButton submitButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
