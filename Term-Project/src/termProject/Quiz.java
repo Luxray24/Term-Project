@@ -39,6 +39,7 @@ public class Quiz extends javax.swing.JFrame {
 
     TermProjectJFrame mainFrame;
     Question questions;
+    
 
     public Quiz(ArrayList array, Question objQuestion, String imageName) {
         initComponents();
@@ -69,6 +70,7 @@ public class Quiz extends javax.swing.JFrame {
         ImageIcon roomImage;
         roomImage = new ImageIcon( this.getClass().getResource(imageName) );
         imageLabel.setIcon(roomImage);
+
         
         
     }
@@ -95,6 +97,7 @@ public class Quiz extends javax.swing.JFrame {
         nextJButton = new javax.swing.JButton();
         imagePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
+        glossaryJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(864, 439));
@@ -148,6 +151,14 @@ public class Quiz extends javax.swing.JFrame {
         imagePanel.add(imageLabel);
         imageLabel.setBounds(0, 0, 580, 410);
 
+        glossaryJButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        glossaryJButton.setText("Glossary");
+        glossaryJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                glossaryJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,19 +167,20 @@ public class Quiz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(mainMenuJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(submitJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextJButton))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(radio4)
                             .addComponent(radio3)
                             .addComponent(questionJLabel)
                             .addComponent(radio2)
-                            .addComponent(radio1))))
+                            .addComponent(radio1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(mainMenuJButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(submitJButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextJButton))
+                    .addComponent(glossaryJButton))
                 .addGap(18, 18, 18)
                 .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(149, Short.MAX_VALUE))
@@ -176,25 +188,28 @@ public class Quiz extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(questionJLabel)
-                .addGap(26, 26, 26)
-                .addComponent(radio1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radio2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radio3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radio4)
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submitJButton)
-                    .addComponent(mainMenuJButton)
-                    .addComponent(nextJButton))
-                .addGap(95, 95, 95))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(questionJLabel)
+                        .addGap(26, 26, 26)
+                        .addComponent(radio1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radio2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radio3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(radio4)
+                        .addGap(81, 81, 81)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(submitJButton)
+                            .addComponent(mainMenuJButton)
+                            .addComponent(nextJButton))
+                        .addGap(52, 52, 52)
+                        .addComponent(glossaryJButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -360,6 +375,10 @@ public class Quiz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_nextJButtonActionPerformed
 
+    private void glossaryJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_glossaryJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_glossaryJButtonActionPerformed
+
     
    
 
@@ -403,6 +422,7 @@ public class Quiz extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton glossaryJButton;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel imagePanel;
     private javax.swing.JButton mainMenuJButton;
