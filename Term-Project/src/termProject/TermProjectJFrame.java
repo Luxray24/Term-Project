@@ -59,7 +59,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         gamePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         gamePanel.setLayout(null);
 
-        articButton.setText("Artic Ecosystem");
+        articButton.setText("Arctic Ecosystem");
         articButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 articButtonActionPerformed(evt);

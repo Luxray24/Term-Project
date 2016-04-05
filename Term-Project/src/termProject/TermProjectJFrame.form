@@ -55,7 +55,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="articButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Artic Ecosystem"/>
+            <Property name="text" type="java.lang.String" value="Arctic Ecosystem"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="articButtonActionPerformed"/>
