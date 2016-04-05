@@ -36,6 +36,10 @@ public class Quiz extends javax.swing.JFrame {
     String option3;
     String option4;
     String correctAnswer;
+    String wrongMessage;
+    String correctMessage;
+    
+    int size;
 
     TermProjectJFrame mainFrame;
     Question questions;
@@ -43,14 +47,14 @@ public class Quiz extends javax.swing.JFrame {
 
     public Quiz(ArrayList array, Question objQuestion, String imageName) {
         initComponents();
-        //groupButton();
-        //questions = new Question();
+        
         this.setLocationRelativeTo(null);
         mainMenuJButton.setVisible(false);
-        nextJButton.setVisible(false);
-        
+                
         multipleQuestionsArray = array;
         multipleQuestion = objQuestion;
+        
+        size = multipleQuestionsArray.size() ;
         
         number = multipleQuestion.getQuestionNumber();
         String questionNumber = multipleQuestion.getQuestionNumber() + "";
@@ -94,7 +98,6 @@ public class Quiz extends javax.swing.JFrame {
         radio4 = new javax.swing.JRadioButton();
         submitJButton = new javax.swing.JButton();
         mainMenuJButton = new javax.swing.JButton();
-        nextJButton = new javax.swing.JButton();
         imagePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
         glossaryJButton = new javax.swing.JButton();
@@ -137,14 +140,6 @@ public class Quiz extends javax.swing.JFrame {
             }
         });
 
-        nextJButton.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        nextJButton.setText("Next >>");
-        nextJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextJButtonActionPerformed(evt);
-            }
-        });
-
         imagePanel.setMaximumSize(new java.awt.Dimension(529, 416));
         imagePanel.setMinimumSize(new java.awt.Dimension(529, 416));
         imagePanel.setLayout(null);
@@ -177,11 +172,9 @@ public class Quiz extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(mainMenuJButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(submitJButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextJButton))
+                        .addComponent(submitJButton))
                     .addComponent(glossaryJButton))
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(149, Short.MAX_VALUE))
         );
@@ -203,8 +196,7 @@ public class Quiz extends javax.swing.JFrame {
                         .addGap(81, 81, 81)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(submitJButton)
-                            .addComponent(mainMenuJButton)
-                            .addComponent(nextJButton))
+                            .addComponent(mainMenuJButton))
                         .addGap(52, 52, 52)
                         .addComponent(glossaryJButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -222,10 +214,9 @@ public class Quiz extends javax.swing.JFrame {
         {
             if (option1.equals(correctAnswer))
             {
-                if (multipleQuestion.getQuestionNumber()== 3)
+                if (multipleQuestion.getQuestionNumber()== size )
                 {
                     mainMenuJButton.setVisible(true);
-                    nextJButton.setVisible(false);
                     submitJButton.setEnabled(false);
                     radio1.setEnabled(false);
                     radio2.setEnabled(false);
@@ -235,26 +226,23 @@ public class Quiz extends javax.swing.JFrame {
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
-                    //mainMenuJButton.setVisible(true);
-                    nextJButton.setVisible(true);
-                    submitJButton.setVisible(false);
+                    JOptionPane.showMessageDialog(null,  multipleQuestion.getCorrectMessage());
+                    nextButton();
                 }
             }
             else
             {
                 radio1.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+                JOptionPane.showMessageDialog(null,  multipleQuestion.getWrongMessage());
             }
         }
         else if (radio2.isSelected()) 
         {
             if (option2.equals(correctAnswer))
             {
-                if (multipleQuestion.getQuestionNumber()== 3)
+                if (multipleQuestion.getQuestionNumber()== size)
                 {
                     mainMenuJButton.setVisible(true);
-                    nextJButton.setVisible(false);
                     submitJButton.setEnabled(false);
                     radio1.setEnabled(false);
                     radio2.setEnabled(false);
@@ -264,26 +252,23 @@ public class Quiz extends javax.swing.JFrame {
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
-                    //mainMenuJButton.setVisible(true);
-                    nextJButton.setVisible(true);
-                    submitJButton.setVisible(false);
+                    JOptionPane.showMessageDialog(null,  multipleQuestion.getCorrectMessage());
+                    nextButton();
                 }
             }
              else
             {
                 radio2.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+                JOptionPane.showMessageDialog(null,  multipleQuestion.getWrongMessage());
             }
         }
         else if (radio3.isSelected()) 
         {
             if (option3.equals(correctAnswer))
             {
-                if (multipleQuestion.getQuestionNumber()== 3)
+                if (multipleQuestion.getQuestionNumber()== size)
                 {
                     mainMenuJButton.setVisible(true);
-                    nextJButton.setVisible(false);
                     submitJButton.setEnabled(false);
                     radio1.setEnabled(false);
                     radio2.setEnabled(false);
@@ -293,26 +278,23 @@ public class Quiz extends javax.swing.JFrame {
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
-                    //mainMenuJButton.setVisible(true);
-                    nextJButton.setVisible(true);
-                    submitJButton.setVisible(false);
+                    JOptionPane.showMessageDialog(null,  multipleQuestion.getCorrectMessage());
+                    nextButton();
                 }
             }
              else
             {
                 radio3.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+                JOptionPane.showMessageDialog(null,  multipleQuestion.getWrongMessage());
             }
         }
         else if (radio4.isSelected()) 
         {
             if (option4.equals(correctAnswer))
             {
-                if (multipleQuestion.getQuestionNumber()== 3)
+                if (multipleQuestion.getQuestionNumber()== size)
                 {
                     mainMenuJButton.setVisible(true);
-                    nextJButton.setVisible(false);
                     submitJButton.setEnabled(false);
                     radio1.setEnabled(false);
                     radio2.setEnabled(false);
@@ -322,16 +304,14 @@ public class Quiz extends javax.swing.JFrame {
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
-                    //mainMenuJButton.setVisible(true);
-                    nextJButton.setVisible(true);
-                    submitJButton.setVisible(false);
+                    JOptionPane.showMessageDialog(null,  multipleQuestion.getCorrectMessage());
+                    nextButton();
                 }
             }
              else
             {
                 radio4.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "Oops.  Looks like that wasn't it.  Please try again.");
+                JOptionPane.showMessageDialog(null,  multipleQuestion.getWrongMessage());
             }
         }
         
@@ -343,37 +323,6 @@ public class Quiz extends javax.swing.JFrame {
         this.setVisible(false);
                 
     }//GEN-LAST:event_mainMenuJButtonActionPerformed
-
-    private void nextJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextJButtonActionPerformed
-        
-        radio1.setEnabled(true);
-        radio2.setEnabled(true);
-        radio3.setEnabled(true);
-        radio4.setEnabled(true);
-        
-        int currentQuestion = multipleQuestion.getQuestionNumber();
-        multipleQuestion = multipleQuestionsArray.get(currentQuestion);
-        
-        number = multipleQuestion.getQuestionNumber();
-        String questionNumber = multipleQuestion.getQuestionNumber() + "";
-        question = multipleQuestion.getQuestion();
-        option1 = multipleQuestion.getOption1();
-        option2 = multipleQuestion.getOption2();
-        option3 = multipleQuestion.getOption3();
-        option4 = multipleQuestion.getOption4();
-        correctAnswer = multipleQuestion.getCorrectAnswer();
-        
-        questionJLabel.setText(questionNumber + ". " + question);
-        radio1.setText(option1);
-        radio2.setText(option2);
-        radio3.setText(option3);
-        radio4.setText(option4);
-        
-        mainMenuJButton.setVisible(false);
-        nextJButton.setVisible(false);
-        submitJButton.setVisible(true);
-        
-    }//GEN-LAST:event_nextJButtonActionPerformed
 
     private void glossaryJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_glossaryJButtonActionPerformed
         // TODO add your handling code here:
@@ -420,13 +369,44 @@ public class Quiz extends javax.swing.JFrame {
                
     }
     
+    public void nextButton()
+    {
+        radio1.setEnabled(true);
+        radio2.setEnabled(true);
+        radio3.setEnabled(true);
+        radio4.setEnabled(true);
+        
+        optionGroup.clearSelection();
+        
+        int currentQuestion = multipleQuestion.getQuestionNumber();
+        multipleQuestion = multipleQuestionsArray.get(currentQuestion);
+        
+        number = multipleQuestion.getQuestionNumber();
+        String questionNumber = multipleQuestion.getQuestionNumber() + "";
+        question = multipleQuestion.getQuestion();
+        option1 = multipleQuestion.getOption1();
+        option2 = multipleQuestion.getOption2();
+        option3 = multipleQuestion.getOption3();
+        option4 = multipleQuestion.getOption4();
+        correctAnswer = multipleQuestion.getCorrectAnswer();
+        
+        questionJLabel.setText(questionNumber + ". " + question);
+        radio1.setText(option1);
+        radio2.setText(option2);
+        radio3.setText(option3);
+        radio4.setText(option4);
+        
+        mainMenuJButton.setVisible(false);
+        submitJButton.setVisible(true);
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton glossaryJButton;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel imagePanel;
     private javax.swing.JButton mainMenuJButton;
-    private javax.swing.JButton nextJButton;
     private javax.swing.ButtonGroup optionGroup;
     private javax.swing.JLabel questionJLabel;
     private javax.swing.JRadioButton radio1;

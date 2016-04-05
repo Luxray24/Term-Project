@@ -279,8 +279,10 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                 String option3 = br.readLine();
                 String option4 = br.readLine();
                 String correctAnswer = br.readLine();
+                String wrongMessage = br.readLine();
+                String correctMessage = br.readLine();
                 
-                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer);
+                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer, wrongMessage, correctMessage);
                 grasslandQuestions.add(newQuestion);
             }
         } 
@@ -326,8 +328,10 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                 String option3 = br.readLine();
                 String option4 = br.readLine();
                 String correctAnswer = br.readLine();
+                String wrongMessage = br.readLine();
+                String correctMessage = br.readLine();
                 
-                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer);
+                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer, wrongMessage, correctMessage);
                 freshwaterQuestions.add(newQuestion);
             }
         } 

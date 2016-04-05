@@ -6,6 +6,8 @@ Cheetah
 Hyena
 Gazelles
 Gazelles
+Oops! Remember a carnivore is an animal that eats other animals. Try Again!
+Good job! You remembered that gazelles only eat plants. Continue to the next question!
 // Question 2
 2
 Which of the following is a producer in the Savannah?
@@ -14,6 +16,8 @@ Gazelles
 Star Grass
 Warthog
 Star Grass
+Oops! Remember a producer is the first level of the food chain. Try Again!
+Good job! You remembered that star grass is a food source for other animals. Continue to the next question!
 // Question 3
 3
 A consumer that eats both animals and plants are called a ______. 
@@ -22,3 +26,5 @@ Producer
 Herbivore
 Carnivore
 Omnivore
+Oops! See the glossary if you are really stuck! Try Again!
+Good job! Continue to the next question!

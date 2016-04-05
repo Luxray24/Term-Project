@@ -47,12 +47,10 @@
                       <Component id="mainMenuJButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="submitJButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="nextJButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="glossaryJButton" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Component id="imagePanel" min="-2" pref="587" max="-2" attributes="0"/>
               <EmptySpace pref="149" max="32767" attributes="0"/>
           </Group>
@@ -77,7 +75,6 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="submitJButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="mainMenuJButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nextJButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Component id="glossaryJButton" min="-2" max="-2" attributes="0"/>
@@ -165,17 +162,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainMenuJButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="nextJButton">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Next &gt;&gt;"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextJButtonActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="imagePanel">

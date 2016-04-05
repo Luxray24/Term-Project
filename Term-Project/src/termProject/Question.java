@@ -25,9 +25,11 @@ public class Question {
     private String option3;
     private String option4;
     private String correctAnswer;
+    private String wrongMessage;
+    private String correctMessage;
     
     
-    public Question(int questionNumber, String question, String option1, String option2, String option3, String option4, String correctAnswer) 
+    public Question(int questionNumber, String question, String option1, String option2, String option3, String option4, String correctAnswer, String wrongMessage, String correctMessage) 
     {
         this.questionNumber = questionNumber;
         this.question = question;
@@ -36,6 +38,8 @@ public class Question {
         this.option3 = option3;
         this.option4 = option4;
         this.correctAnswer = correctAnswer;
+        this.wrongMessage = wrongMessage;
+        this.correctMessage = correctMessage;
         
     }
 
@@ -72,6 +76,16 @@ public class Question {
     public String getCorrectAnswer()
     {
         return correctAnswer;
+    }
+    
+    public String getWrongMessage()
+    {
+        return wrongMessage;
+    }
+    
+    public String getCorrectMessage()
+    {
+        return correctMessage;
     }
     
     

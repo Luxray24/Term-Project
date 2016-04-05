@@ -6,6 +6,8 @@ Herbivore
 Decomposer
 Carnivore
 Carnivore
+Oops! See the glossary if you are really stuck! Try Again!
+Good job! Continue to the next question!
 // Question 2
 2
 Which animal is a producer in a freshwater ecosystem ecosystem?
@@ -14,6 +16,8 @@ Tadpole
 Heron
 Duck
 Algae
+Oops! Remember a producer is the first level of the food chain. Try Again!
+Good job! You remembered that algae is a food source for other animals. Continue to the next question!"
 // Question 3
 3
 Which of the following is not a carnivore in a freshwater ecosystem?
@@ -22,3 +26,5 @@ Birds
 Moss
 Eels
 Moss
+Oops! Remember a carnivore is an animal that eats other animals. Try Again!
+Good job! You remembered that moss is a producer. Continue to the next question!
