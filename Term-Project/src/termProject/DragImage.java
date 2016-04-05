@@ -73,7 +73,7 @@ public class DragImage {
   
   public ImageIcon getIcon()
   {
-      ImageIcon image = new ImageIcon(imageSRC);
+      ImageIcon image = new ImageIcon( this.getClass().getResource(imageSRC) );
       return image;
   }
 }

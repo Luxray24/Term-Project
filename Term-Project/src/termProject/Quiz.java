@@ -67,8 +67,9 @@ public class Quiz extends javax.swing.JFrame {
         radio4.setText(option4);
         
         ImageIcon roomImage;
-        roomImage = new ImageIcon(imageName);
+        roomImage = new ImageIcon( this.getClass().getResource(imageName) );
         imageLabel.setIcon(roomImage);
+        
         
     }
 
@@ -222,6 +223,7 @@ public class Quiz extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
                     //mainMenuJButton.setVisible(true);
                     nextJButton.setVisible(true);
+                    submitJButton.setVisible(false);
                 }
             }
             else
@@ -250,6 +252,7 @@ public class Quiz extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
                     //mainMenuJButton.setVisible(true);
                     nextJButton.setVisible(true);
+                    submitJButton.setVisible(false);
                 }
             }
              else
@@ -278,6 +281,7 @@ public class Quiz extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
                     //mainMenuJButton.setVisible(true);
                     nextJButton.setVisible(true);
+                    submitJButton.setVisible(false);
                 }
             }
              else
@@ -306,6 +310,7 @@ public class Quiz extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Congrats!  You got it right!");
                     //mainMenuJButton.setVisible(true);
                     nextJButton.setVisible(true);
+                    submitJButton.setVisible(false);
                 }
             }
              else
@@ -351,6 +356,7 @@ public class Quiz extends javax.swing.JFrame {
         
         mainMenuJButton.setVisible(false);
         nextJButton.setVisible(false);
+        submitJButton.setVisible(true);
         
     }//GEN-LAST:event_nextJButtonActionPerformed
 

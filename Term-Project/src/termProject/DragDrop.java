@@ -29,7 +29,10 @@ public class DragDrop extends javax.swing.JFrame {
     DragImage imageObject = null;
     
     int points;
-    int tilesCorrect;
+    int tiles1;
+    int tiles2;
+    int tiles3;
+    int tiles4;
     
     /**
      * Creates new form gameJFrame
@@ -40,7 +43,6 @@ public class DragDrop extends javax.swing.JFrame {
         mainMenuButton.setVisible(false);
         
         
-              
         endingImage1.setText("");
         endingImage2.setText("");
         endingImage3.setText("");
@@ -57,22 +59,22 @@ public class DragDrop extends javax.swing.JFrame {
             int place = imageObject.getInitialPlace();
             if (place == 1)
             {
-                startingImage1.setIcon(new ImageIcon(imageObject.getImageFileName()));
+                startingImage1.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage1.setText(imageObject.getImageName());
             }
             else if (place == 2)
             {
-                startingImage2.setIcon(new ImageIcon(imageObject.getImageFileName()));
+                startingImage2.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage2.setText(imageObject.getImageName());
             }
             else if (place == 3)
             {
-                startingImage3.setIcon(new ImageIcon(imageObject.getImageFileName()));
+                startingImage3.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage3.setText(imageObject.getImageName());
             }
             else if (place == 4)
             {
-                startingImage4.setIcon(new ImageIcon(imageObject.getImageFileName()));
+                startingImage4.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage4.setText(imageObject.getImageName());
             }
         }
@@ -348,12 +350,31 @@ public class DragDrop extends javax.swing.JFrame {
         if (endingImage1.getText() == imageObject.getImageName())
         {
            
-            endingImage1.setIcon(new ImageIcon(imageObject.getImageFileName()));
+            endingImage1.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
             endingImage1.setBorder(new LineBorder(Color.black, 5));
+            if (imageObject.getInitialPlace() == 1)
+            {
+                startingImage1.addMouseListener(null);
+                startingImage1.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 2)
+            {
+                startingImage2.addMouseListener(null);
+                startingImage2.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 3)
+            {
+                startingImage3.addMouseListener(null);
+                startingImage3.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 4)
+            {
+                startingImage4.addMouseListener(null);
+                startingImage4.setTransferHandler(null);
+            }                
             endingImage1.addMouseListener(null);
             endingImage1.setTransferHandler(null); 
-            tilesCorrect += 1;
-            points += 25;
+            tiles1 = 1;
         }
         else
         {
@@ -367,12 +388,31 @@ public class DragDrop extends javax.swing.JFrame {
         if (endingImage2.getText() == imageObject.getImageName())
         {
            
-            endingImage2.setIcon(new ImageIcon(imageObject.getImageFileName()));
+            endingImage2.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
             endingImage2.setBorder(new LineBorder(Color.black, 5));
+            if (imageObject.getInitialPlace() == 1)
+            {
+                startingImage1.addMouseListener(null);
+                startingImage1.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 2)
+            {
+                startingImage2.addMouseListener(null);
+                startingImage2.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 3)
+            {
+                startingImage3.addMouseListener(null);
+                startingImage3.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 4)
+            {
+                startingImage4.addMouseListener(null);
+                startingImage4.setTransferHandler(null);
+            }
             endingImage2.addMouseListener(null);
             endingImage2.setTransferHandler(null); 
-            tilesCorrect += 1;
-            points += 25;
+            tiles2 = 1;
         }
         else
         {
@@ -386,12 +426,31 @@ public class DragDrop extends javax.swing.JFrame {
         if (endingImage3.getText() == imageObject.getImageName())
         {
            
-            endingImage3.setIcon(new ImageIcon(imageObject.getImageFileName()));
+            endingImage3.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
             endingImage3.setBorder(new LineBorder(Color.black, 5));
+            if (imageObject.getInitialPlace() == 1)
+            {
+                startingImage1.addMouseListener(null);
+                startingImage1.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 2)
+            {
+                startingImage2.addMouseListener(null);
+                startingImage2.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 3)
+            {
+                startingImage3.addMouseListener(null);
+                startingImage3.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 4)
+            {
+                startingImage4.addMouseListener(null);
+                startingImage4.setTransferHandler(null);
+            } 
             endingImage3.addMouseListener(null);
             endingImage3.setTransferHandler(null); 
-            tilesCorrect += 1;
-            points += 25;
+            tiles3 = 1;
         }
         else
         {
@@ -405,12 +464,31 @@ public class DragDrop extends javax.swing.JFrame {
         if (endingImage4.getText() == imageObject.getImageName())
         {
            
-            endingImage4.setIcon(new ImageIcon(imageObject.getImageFileName()));
+            endingImage4.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
             endingImage4.setBorder(new LineBorder(Color.black, 5));
+            if (imageObject.getInitialPlace() == 1)
+            {
+                startingImage1.addMouseListener(null);
+                startingImage1.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 2)
+            {
+                startingImage2.addMouseListener(null);
+                startingImage2.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 3)
+            {
+                startingImage3.addMouseListener(null);
+                startingImage3.setTransferHandler(null);
+            }
+            else if (imageObject.getInitialPlace() == 4)
+            {
+                startingImage4.addMouseListener(null);
+                startingImage4.setTransferHandler(null);
+            }
             endingImage4.addMouseListener(null);
             endingImage4.setTransferHandler(null);
-            tilesCorrect += 1;
-            points += 25;
+            tiles4 = 1;
         }
         else
         {
@@ -418,14 +496,15 @@ public class DragDrop extends javax.swing.JFrame {
         }
         
         
-        if(tilesCorrect == 4)
+        if(tiles1 == 1 && tiles2 == 1 && tiles3 == 1 && tiles4 == 1 )
         {
             JOptionPane.showMessageDialog(null, "Congrats!  You got the food web correct!  Go back to the Main Map to choose another game!");
             mainMenuButton.setVisible(true);
+            submitButton.setEnabled(false);
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Oops.  Looks like one of those were not placed in the correct spot.  Please try again.");
+            JOptionPane.showMessageDialog(null, "Oops.  Looks like there might be an empty space or one of those were not placed in the correct spot.  Please try again.");
         }
         
                

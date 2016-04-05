@@ -1,24 +1,24 @@
 //Image 1
 1
 Loggerhead Turtle
-C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\LoggerheadTurtle.jpg
+/images/LoggerheadTurtle.jpg
 3
 3
 //Image 2
 2
 Jellyfish
-C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Jellyfish.jpg
+/images/Jellyfish.jpg
 2
 2
 //Image 3
 3
 Zooplankton
-C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Zooplankton.jpg
+/images/Zooplankton.jpg
 1
 1
 //Image 4
 4
 Tiger Shark
-C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\TigerShark.jpg
+/images/TigerShark.jpg
 4
 4

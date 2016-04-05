@@ -1,24 +1,24 @@
 //Image 1
 1
 Phytoplankton
-C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Phytoplankton.jpg
+/images/Phytoplankton.jpg
 1
 1
 //Image 2
 2
 Leopard Seal
-C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\LeopardSeal.jpg
+/images/LeopardSeal.jpg
 4
-4
+3
 //Image 3
 3
 Krill
-C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Krill.jpg
+/images/Krill.jpg
 2
-2
+4
 //Image 4
 4
 Penguin
-C:\Users\animalcrackers48\Documents\Programming\MP4\Term-Project\Term-Project\src\images\Penguin.jpg
+/images/Penguin.jpg
 3
-3
+2

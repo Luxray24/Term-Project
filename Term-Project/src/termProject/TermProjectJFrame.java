@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,10 +24,15 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     
     public Quiz quiz;
     
+    public int points = 0;
+    
+    
+    
     public TermProjectJFrame() {
         initComponents();
         //this.setLocationRelativeTo(null);
         //quiz = new Quiz();
+        
     }
 
     /**
@@ -45,6 +51,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         rainforestButton = new javax.swing.JButton();
         grasslandButton = new javax.swing.JButton();
         freshwaterButton = new javax.swing.JButton();
+        pointsLabel = new javax.swing.JLabel();
         backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -96,6 +103,13 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         });
         gamePanel.add(freshwaterButton);
         freshwaterButton.setBounds(130, 190, 210, 50);
+
+        pointsLabel.setBackground(new java.awt.Color(0, 0, 0));
+        pointsLabel.setFont(new java.awt.Font("Tahoma", 0, 42)); // NOI18N
+        pointsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pointsLabel.setText("0 Points");
+        gamePanel.add(pointsLabel);
+        pointsLabel.setBounds(1100, 130, 210, 110);
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Map.jpg"))); // NOI18N
         gamePanel.add(backgroundImage);
@@ -153,7 +167,9 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         articButton.setEnabled(false);
         
-        
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        hasGameWon(points);
     }//GEN-LAST:event_articButtonActionPerformed
 
     private void marineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marineButtonActionPerformed
@@ -192,7 +208,9 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         marineButton.setEnabled(false);
         
-        
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        hasGameWon(points);
     }//GEN-LAST:event_marineButtonActionPerformed
 
     private void rainforestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rainforestButtonActionPerformed
@@ -231,12 +249,15 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         rainforestButton.setEnabled(false);
         
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        hasGameWon(points);
     }//GEN-LAST:event_rainforestButtonActionPerformed
 
     private void grasslandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grasslandButtonActionPerformed
         // Multiple Choice Questions
         String fileName = "/data/Grasslands.txt";
-        String imageSRC = "C:\\Users\\animalcrackers48\\Documents\\Programming\\MP4\\Term-Project\\Term-Project\\src\\images\\Africa.jpg";
+        String file = "/images/Africa.jpg";
         
         ArrayList<Question> grasslandQuestions = new ArrayList<Question>();
         Question grassland = null;
@@ -269,15 +290,19 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         grassland = grasslandQuestions.get(0);
         
-        new Quiz(grasslandQuestions, grassland, imageSRC).setVisible(true);
+        new Quiz(grasslandQuestions, grassland, file).setVisible(true);
         
         grasslandButton.setEnabled(false);
+        
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        hasGameWon(points);
     }//GEN-LAST:event_grasslandButtonActionPerformed
 
     private void freshwaterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freshwaterButtonActionPerformed
         // Multiple Choice Questions
         String fileName = "/data/Freshwater.txt";
-        String imageSRC = "C:\\Users\\animalcrackers48\\Documents\\Programming\\MP4\\Term-Project\\Term-Project\\src\\images\\Freshwater.jpg";
+        String imageSRC = "/images/Freshwater.jpg";
         
         ArrayList<Question> freshwaterQuestions = new ArrayList<Question>();
         Question freshwater = null;
@@ -315,6 +340,11 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         new Quiz(freshwaterQuestions, freshwater, imageSRC).setVisible(true);
         
         freshwaterButton.setEnabled(false);
+        
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        
+        hasGameWon(points);
     }//GEN-LAST:event_freshwaterButtonActionPerformed
 
     /**
@@ -350,6 +380,28 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                 new TermProjectJFrame().setVisible(true);
             }
         });
+        
+               
+    }
+    
+    public void hasGameWon(int points)
+    {
+        if (points == 100)
+        {
+            int choice = JOptionPane.showConfirmDialog(this, "Congrats!  You have won the game!  Would you like to play again?", "Yay! You won!", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) //If players choose to play again
+            {
+                points = 0;
+                pointsLabel.setText(points + " Points");
+                rainforestButton.setEnabled(true);
+                articButton.setEnabled(true);
+                marineButton.setEnabled(true);
+                grasslandButton.setEnabled(true);
+                freshwaterButton.setEnabled(true);
+            }
+            else //Exit game with another game
+                System.exit(1);
+        }
     }
  
     
@@ -362,6 +414,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     private javax.swing.JButton grasslandButton;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton marineButton;
+    private javax.swing.JLabel pointsLabel;
     private javax.swing.JButton rainforestButton;
     // End of variables declaration//GEN-END:variables
 }
