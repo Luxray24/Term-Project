@@ -257,7 +257,6 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     private void grasslandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grasslandButtonActionPerformed
         // Multiple Choice Questions
         String fileName = "/data/Grasslands.txt";
-        String file = "/images/Africa.jpg";
         
         ArrayList<Question> grasslandQuestions = new ArrayList<Question>();
         Question grassland = null;
@@ -275,14 +274,18 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                 int questionNumber = Integer.parseInt(br.readLine());
                 String question = br.readLine();
                 String option1 = br.readLine();
+                String option1ImageName = br.readLine();
                 String option2 = br.readLine();
+                String option2ImageName = br.readLine();
                 String option3 = br.readLine();
+                String option3ImageName = br.readLine();
                 String option4 = br.readLine();
+                String option4ImageName = br.readLine();
                 String correctAnswer = br.readLine();
                 String wrongMessage = br.readLine();
                 String correctMessage = br.readLine();
                 
-                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer, wrongMessage, correctMessage);
+                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer, wrongMessage, correctMessage, option1ImageName, option2ImageName, option3ImageName, option4ImageName);
                 grasslandQuestions.add(newQuestion);
             }
         } 
@@ -292,7 +295,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         grassland = grasslandQuestions.get(0);
         
-        new Quiz(grasslandQuestions, grassland, file).setVisible(true);
+        new Quiz(grasslandQuestions, grassland).setVisible(true);
         
         grasslandButton.setEnabled(false);
         
@@ -324,14 +327,18 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                 int questionNumber = Integer.parseInt(br.readLine());
                 String question = br.readLine();
                 String option1 = br.readLine();
+                String option1ImageName = br.readLine();
                 String option2 = br.readLine();
+                String option2ImageName = br.readLine();
                 String option3 = br.readLine();
+                String option3ImageName = br.readLine();
                 String option4 = br.readLine();
+                String option4ImageName = br.readLine();
                 String correctAnswer = br.readLine();
                 String wrongMessage = br.readLine();
                 String correctMessage = br.readLine();
                 
-                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer, wrongMessage, correctMessage);
+                Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer, wrongMessage, correctMessage, option1ImageName, option2ImageName, option3ImageName, option4ImageName);
                 freshwaterQuestions.add(newQuestion);
             }
         } 
@@ -341,7 +348,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         freshwater = freshwaterQuestions.get(0);
         
-        new Quiz(freshwaterQuestions, freshwater, imageSRC).setVisible(true);
+        new Quiz(freshwaterQuestions, freshwater).setVisible(true);
         
         freshwaterButton.setEnabled(false);
         
