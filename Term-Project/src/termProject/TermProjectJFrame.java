@@ -22,6 +22,8 @@ public class TermProjectJFrame extends javax.swing.JFrame {
      * Creates new form TermProjectJFrame
      */
     
+    DragDrop dragDrop;
+    
     public Quiz quiz;
     
     public int points = 0;
@@ -132,7 +134,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void articButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articButtonActionPerformed
-        // TODO add your handling code here:
+        
         String fileName = "/data/Artic.txt";
         
         ArrayList<DragImage> articDrag = new ArrayList<DragImage>();
@@ -164,6 +166,8 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         artic = articDrag.get(0);
                 
         new DragDrop(articDrag, artic).setVisible(true);
+        dragDrop.scoreJLabel.setText(points + " points");
+        
         
         articButton.setEnabled(false);
         

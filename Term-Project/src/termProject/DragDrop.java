@@ -1,6 +1,3 @@
-
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -26,17 +23,16 @@ import javax.swing.border.SoftBevelBorder;
  * @author Mark Swarner, Georgia Snelling
  */
 public class DragDrop extends javax.swing.JFrame {
-    
-    
+
     ArrayList<DragImage> imageDragDrop = new ArrayList<DragImage>();
     DragImage imageObject = null;
-    
+
     int points;
     int tiles1;
     int tiles2;
     int tiles3;
     int tiles4;
-    
+
     /**
      * Creates new form gameJFrame
      */
@@ -44,82 +40,80 @@ public class DragDrop extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         mainMenuButton.setVisible(false);
-        
-        
+
         endingImage1.setText("");
         endingImage2.setText("");
         endingImage3.setText("");
         endingImage4.setText("");
-        
-               
         imageDragDrop = array;
         imageObject = imageDrag;
 
-        
-        for (int i = 0; i < 4; i ++)
-        {
+        for (int i = 0; i < 4; i++) {
             imageObject = imageDragDrop.get(i);
             int place = imageObject.getInitialPlace();
-            if (place == 1)
-            {
-                startingImage1.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
+            if (place == 1) {
+                startingImage1.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage1.setText(imageObject.getImageName());
-            }
-            else if (place == 2)
-            {
-                startingImage2.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
+            } else if (place == 2) {
+                startingImage2.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage2.setText(imageObject.getImageName());
-            }
-            else if (place == 3)
-            {
-                startingImage3.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
+            } else if (place == 3) {
+                startingImage3.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage3.setText(imageObject.getImageName());
-            }
-            else if (place == 4)
-            {
-                startingImage4.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
+            } else if (place == 4) {
+                startingImage4.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage4.setText(imageObject.getImageName());
             }
         }
-       
-        
-        MouseListener ml = new MouseListener() 
-        { 
-            @Override public void mouseClicked(MouseEvent e) {} 
-            @Override public void mousePressed(MouseEvent e) { 
-                JComponent jc = (JComponent)e.getSource();
+
+        MouseListener ml = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                JComponent jc = (JComponent) e.getSource();
                 TransferHandler th = jc.getTransferHandler();
-                th.exportAsDrag(jc, e, TransferHandler.COPY); 
-            } 
-            @Override public void mouseReleased(MouseEvent e) {} 
-            @Override public void mouseEntered(MouseEvent e) {} 
-            @Override public void mouseExited(MouseEvent e) {} 
+                th.exportAsDrag(jc, e, TransferHandler.COPY);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
         };
-        
-        
-        startingImage1.addMouseListener(ml); 
+
+        startingImage1.addMouseListener(ml);
         startingImage2.addMouseListener(ml);
         startingImage3.addMouseListener(ml);
         startingImage4.addMouseListener(ml);
-        
-        
-        startingImage1.setTransferHandler(new TransferHandler("text")); 
+
+        startingImage1.setTransferHandler(new TransferHandler("text"));
         startingImage4.setTransferHandler(new TransferHandler("text"));
         startingImage2.setTransferHandler(new TransferHandler("text"));
         startingImage3.setTransferHandler(new TransferHandler("text"));
-                
-        endingImage1.setTransferHandler(new TransferHandler("text")); 
+
+        endingImage1.setTransferHandler(new TransferHandler("text"));
         endingImage2.setTransferHandler(new TransferHandler("text"));
         endingImage3.setTransferHandler(new TransferHandler("text"));
-        endingImage4.setTransferHandler(new TransferHandler("text"));      
-        
-        
-        setLayout(null); 
-        setSize(500,500); 
-        setLocationRelativeTo(null); 
-        setDefaultCloseOperation(DragDrop.EXIT_ON_CLOSE); 
-        setVisible(true); 
-}
+        endingImage4.setTransferHandler(new TransferHandler("text"));
+
+        setLayout(null);
+        setSize(500, 500);
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    DragDrop() {
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,8 +147,9 @@ public class DragDrop extends javax.swing.JFrame {
         eat3 = new javax.swing.JLabel();
         mainMenuButton = new javax.swing.JButton();
         instructions = new javax.swing.JLabel();
+        scoreJLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1257, 675));
         setMinimumSize(new java.awt.Dimension(1257, 675));
 
@@ -270,6 +265,9 @@ public class DragDrop extends javax.swing.JFrame {
         instructions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         instructions.setText("This is a Drag and Drop Game!  Click on the organism and drag and release it where you think it goes in order of this food web!");
 
+        scoreJLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        scoreJLabel.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -283,10 +281,12 @@ public class DragDrop extends javax.swing.JFrame {
                                 .addComponent(panel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(eat1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(46, 46, 46)
-                                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(scoreJLabel))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(panel6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -318,8 +318,13 @@ public class DragDrop extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(scoreJLabel)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
@@ -359,171 +364,120 @@ public class DragDrop extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-        
+
         imageObject = imageDragDrop.get(0);
-        imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
-        if (endingImage1.getText() == imageObject.getImageName())
-        {
-           
-            endingImage1.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1);
+        if (endingImage1.getText() == imageObject.getImageName()) {
+
+            endingImage1.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
             endingImage1.setBorder(new LineBorder(Color.black, 5));
-            if (imageObject.getInitialPlace() == 1)
-            {
+            if (imageObject.getInitialPlace() == 1) {
                 startingImage1.addMouseListener(null);
                 startingImage1.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 2)
-            {
+            } else if (imageObject.getInitialPlace() == 2) {
                 startingImage2.addMouseListener(null);
                 startingImage2.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 3)
-            {
+            } else if (imageObject.getInitialPlace() == 3) {
                 startingImage3.addMouseListener(null);
                 startingImage3.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 4)
-            {
+            } else if (imageObject.getInitialPlace() == 4) {
                 startingImage4.addMouseListener(null);
                 startingImage4.setTransferHandler(null);
-            }                
+            }
             endingImage1.addMouseListener(null);
-            endingImage1.setTransferHandler(null); 
+            endingImage1.setTransferHandler(null);
             tiles1 = 1;
-        }
-        else
-        {
+        } else {
             endingImage1.setText(null);
         }
-        
-        
-        
+
         imageObject = imageDragDrop.get(1);
-        imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
-        if (endingImage2.getText() == imageObject.getImageName())
-        {
-           
-            endingImage2.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1);
+        if (endingImage2.getText() == imageObject.getImageName()) {
+
+            endingImage2.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
             endingImage2.setBorder(new LineBorder(Color.black, 5));
-            if (imageObject.getInitialPlace() == 1)
-            {
+            if (imageObject.getInitialPlace() == 1) {
                 startingImage1.addMouseListener(null);
                 startingImage1.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 2)
-            {
+            } else if (imageObject.getInitialPlace() == 2) {
                 startingImage2.addMouseListener(null);
                 startingImage2.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 3)
-            {
+            } else if (imageObject.getInitialPlace() == 3) {
                 startingImage3.addMouseListener(null);
                 startingImage3.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 4)
-            {
+            } else if (imageObject.getInitialPlace() == 4) {
                 startingImage4.addMouseListener(null);
                 startingImage4.setTransferHandler(null);
             }
             endingImage2.addMouseListener(null);
-            endingImage2.setTransferHandler(null); 
+            endingImage2.setTransferHandler(null);
             tiles2 = 1;
-        }
-        else
-        {
+        } else {
             endingImage2.setText(null);
         }
-        
-        
-        
+
         imageObject = imageDragDrop.get(2);
-        imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
-        if (endingImage3.getText() == imageObject.getImageName())
-        {
-           
-            endingImage3.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1);
+        if (endingImage3.getText() == imageObject.getImageName()) {
+
+            endingImage3.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
             endingImage3.setBorder(new LineBorder(Color.black, 5));
-            if (imageObject.getInitialPlace() == 1)
-            {
+            if (imageObject.getInitialPlace() == 1) {
                 startingImage1.addMouseListener(null);
                 startingImage1.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 2)
-            {
+            } else if (imageObject.getInitialPlace() == 2) {
                 startingImage2.addMouseListener(null);
                 startingImage2.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 3)
-            {
+            } else if (imageObject.getInitialPlace() == 3) {
                 startingImage3.addMouseListener(null);
                 startingImage3.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 4)
-            {
+            } else if (imageObject.getInitialPlace() == 4) {
                 startingImage4.addMouseListener(null);
                 startingImage4.setTransferHandler(null);
-            } 
+            }
             endingImage3.addMouseListener(null);
-            endingImage3.setTransferHandler(null); 
+            endingImage3.setTransferHandler(null);
             tiles3 = 1;
-        }
-        else
-        {
+        } else {
             endingImage3.setText(null);
         }
-        
-        
-        
+
         imageObject = imageDragDrop.get(3);
-        imageObject = imageDragDrop.get(imageObject.getActualAnimal()-1);
-        if (endingImage4.getText() == imageObject.getImageName())
-        {
-           
-            endingImage4.setIcon(new ImageIcon( this.getClass().getResource(imageObject.getImageFileName())));
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1);
+        if (endingImage4.getText() == imageObject.getImageName()) {
+
+            endingImage4.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
             endingImage4.setBorder(new LineBorder(Color.black, 5));
-            if (imageObject.getInitialPlace() == 1)
-            {
+            if (imageObject.getInitialPlace() == 1) {
                 startingImage1.addMouseListener(null);
                 startingImage1.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 2)
-            {
+            } else if (imageObject.getInitialPlace() == 2) {
                 startingImage2.addMouseListener(null);
                 startingImage2.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 3)
-            {
+            } else if (imageObject.getInitialPlace() == 3) {
                 startingImage3.addMouseListener(null);
                 startingImage3.setTransferHandler(null);
-            }
-            else if (imageObject.getInitialPlace() == 4)
-            {
+            } else if (imageObject.getInitialPlace() == 4) {
                 startingImage4.addMouseListener(null);
                 startingImage4.setTransferHandler(null);
             }
             endingImage4.addMouseListener(null);
             endingImage4.setTransferHandler(null);
             tiles4 = 1;
-        }
-        else
-        {
+        } else {
             endingImage4.setText(null);
         }
-        
-        
-        if(tiles1 == 1 && tiles2 == 1 && tiles3 == 1 && tiles4 == 1 )
-        {
+
+        if (tiles1 == 1 && tiles2 == 1 && tiles3 == 1 && tiles4 == 1) {
             JOptionPane.showMessageDialog(null, "Congrats!  You got the food web correct!  Go back to the Main Map to choose another game!");
             mainMenuButton.setVisible(true);
             submitButton.setEnabled(false);
-        }
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Oops.  Looks like there might be an empty space or one of those were not placed in the correct spot.  Please try again.");
         }
-        
-               
-        
+
+
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void endingImage4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_endingImage4MouseReleased
@@ -532,13 +486,11 @@ public class DragDrop extends javax.swing.JFrame {
 
     private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
         // TODO add your handling code here:
-        
+
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_mainMenuButtonActionPerformed
 
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -595,6 +547,7 @@ public class DragDrop extends javax.swing.JFrame {
     private javax.swing.JPanel panel6;
     private javax.swing.JPanel panel7;
     private javax.swing.JPanel panel8;
+    public javax.swing.JLabel scoreJLabel;
     private javax.swing.JLabel startingImage1;
     private javax.swing.JLabel startingImage2;
     private javax.swing.JLabel startingImage3;
