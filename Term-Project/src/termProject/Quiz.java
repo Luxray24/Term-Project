@@ -25,11 +25,12 @@ public class Quiz extends javax.swing.JFrame {
     /**
      * Creates new form quizJFrame
      */
-    
-    
     ArrayList<Question> multipleQuestionsArray = new ArrayList<Question>();
     Question multipleQuestion = null;
-        
+
+    String filename = "/data/Glossary.txt";
+    String glossary = "";
+    String endOfFileTest = "";
     int number;
     int questionNumber;
     String question;
@@ -40,24 +41,25 @@ public class Quiz extends javax.swing.JFrame {
     String correctAnswer;
     String wrongMessage;
     String correctMessage;
-    
+
+    GlossaryJFrame glossaryJFrame = new GlossaryJFrame();
+
     int size;
 
     TermProjectJFrame mainFrame;
     Question questions;
-    
 
     public Quiz(ArrayList array, Question objQuestion) {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         mainMenuJButton.setVisible(false);
-                
+
         multipleQuestionsArray = array;
         multipleQuestion = objQuestion;
-        
-        size = multipleQuestionsArray.size() ;
-        
+
+        size = multipleQuestionsArray.size();
+
         number = multipleQuestion.getQuestionNumber();
         String questionNumber = multipleQuestion.getQuestionNumber() + "";
         question = multipleQuestion.getQuestion();
@@ -66,27 +68,24 @@ public class Quiz extends javax.swing.JFrame {
         option3 = multipleQuestion.getOption3();
         option4 = multipleQuestion.getOption4();
         correctAnswer = multipleQuestion.getCorrectAnswer();
-        
+
         questionJLabel.setText(questionNumber + ". " + question);
         radio1.setText(option1);
         radio2.setText(option2);
         radio3.setText(option3);
         radio4.setText(option4);
-        
+
 //        radio1.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage1Name())));
 //        radio2.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage2Name())));
 //        radio3.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage3Name())));
 //        radio4.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage4Name())));
 //        
-        image1Label.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage1Name())));
-        image2Label.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage2Name())));
-        image3Label.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage3Name())));
-        image4Label.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage4Name())));
-        
-        
-    }
+        image1Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage1Name())));
+        image2Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage2Name())));
+        image3Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage3Name())));
+        image4Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage4Name())));
 
-   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -244,13 +243,10 @@ public class Quiz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-             
-        if (radio1.isSelected()) 
-        {
-            if (option1.equals(correctAnswer))
-            {
-                if (multipleQuestion.getQuestionNumber()== size )
-                {
+
+        if (radio1.isSelected()) {
+            if (option1.equals(correctAnswer)) {
+                if (multipleQuestion.getQuestionNumber() == size) {
                     mainMenuJButton.setVisible(true);
                     submitJButton.setEnabled(false);
                     radio1.setEnabled(false);
@@ -258,25 +254,17 @@ public class Quiz extends javax.swing.JFrame {
                     radio3.setEnabled(false);
                     radio4.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null,  multipleQuestion.getCorrectMessage());
+                } else {
+                    JOptionPane.showMessageDialog(null, multipleQuestion.getCorrectMessage());
                     nextButton();
                 }
-            }
-            else
-            {
+            } else {
                 radio1.setEnabled(false);
-                JOptionPane.showMessageDialog(null,  multipleQuestion.getWrongMessage());
+                JOptionPane.showMessageDialog(null, multipleQuestion.getWrongMessage());
             }
-        }
-        else if (radio2.isSelected()) 
-        {
-            if (option2.equals(correctAnswer))
-            {
-                if (multipleQuestion.getQuestionNumber()== size)
-                {
+        } else if (radio2.isSelected()) {
+            if (option2.equals(correctAnswer)) {
+                if (multipleQuestion.getQuestionNumber() == size) {
                     mainMenuJButton.setVisible(true);
                     submitJButton.setEnabled(false);
                     radio1.setEnabled(false);
@@ -284,25 +272,17 @@ public class Quiz extends javax.swing.JFrame {
                     radio3.setEnabled(false);
                     radio4.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null,  multipleQuestion.getCorrectMessage());
+                } else {
+                    JOptionPane.showMessageDialog(null, multipleQuestion.getCorrectMessage());
                     nextButton();
                 }
-            }
-             else
-            {
+            } else {
                 radio2.setEnabled(false);
-                JOptionPane.showMessageDialog(null,  multipleQuestion.getWrongMessage());
+                JOptionPane.showMessageDialog(null, multipleQuestion.getWrongMessage());
             }
-        }
-        else if (radio3.isSelected()) 
-        {
-            if (option3.equals(correctAnswer))
-            {
-                if (multipleQuestion.getQuestionNumber()== size)
-                {
+        } else if (radio3.isSelected()) {
+            if (option3.equals(correctAnswer)) {
+                if (multipleQuestion.getQuestionNumber() == size) {
                     mainMenuJButton.setVisible(true);
                     submitJButton.setEnabled(false);
                     radio1.setEnabled(false);
@@ -310,25 +290,17 @@ public class Quiz extends javax.swing.JFrame {
                     radio3.setEnabled(false);
                     radio4.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null,  multipleQuestion.getCorrectMessage());
+                } else {
+                    JOptionPane.showMessageDialog(null, multipleQuestion.getCorrectMessage());
                     nextButton();
                 }
-            }
-             else
-            {
+            } else {
                 radio3.setEnabled(false);
-                JOptionPane.showMessageDialog(null,  multipleQuestion.getWrongMessage());
+                JOptionPane.showMessageDialog(null, multipleQuestion.getWrongMessage());
             }
-        }
-        else if (radio4.isSelected()) 
-        {
-            if (option4.equals(correctAnswer))
-            {
-                if (multipleQuestion.getQuestionNumber()== size)
-                {
+        } else if (radio4.isSelected()) {
+            if (option4.equals(correctAnswer)) {
+                if (multipleQuestion.getQuestionNumber() == size) {
                     mainMenuJButton.setVisible(true);
                     submitJButton.setEnabled(false);
                     radio1.setEnabled(false);
@@ -336,48 +308,56 @@ public class Quiz extends javax.swing.JFrame {
                     radio3.setEnabled(false);
                     radio4.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null,  multipleQuestion.getCorrectMessage());
+                } else {
+                    JOptionPane.showMessageDialog(null, multipleQuestion.getCorrectMessage());
                     nextButton();
                 }
-            }
-             else
-            {
+            } else {
                 radio4.setEnabled(false);
-                JOptionPane.showMessageDialog(null,  multipleQuestion.getWrongMessage());
+                JOptionPane.showMessageDialog(null, multipleQuestion.getWrongMessage());
             }
         }
-        
-                
+
+
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void mainMenuJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuJButtonActionPerformed
-        
+
         this.setVisible(false);
-                
+
     }//GEN-LAST:event_mainMenuJButtonActionPerformed
 
     private void glossaryJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_glossaryJButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            InputStreamReader isr = new InputStreamReader(
+                    this.getClass().getResourceAsStream(filename));
+            BufferedReader br = new BufferedReader(isr);
+            while (true) {
+                endOfFileTest = br.readLine();
+                if (endOfFileTest == null) {
+                    break;
+                }
+                glossary = glossary + endOfFileTest + "\n" + "\n";
+            }
+        } catch (IOException e) {
+
+        }
+        glossaryJFrame.glossaryJTextArea.setText(glossary);
+        glossaryJFrame.setVisible(true);
     }//GEN-LAST:event_glossaryJButtonActionPerformed
 
     private void radio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio1ActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_radio1ActionPerformed
 
     private void radio1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radio1MouseClicked
         // TODO add your handling code here:
-        
-        radio1.setBorder(new LineBorder(Color.black, 5));
-        
-    }//GEN-LAST:event_radio1MouseClicked
 
-    
-   
+        radio1.setBorder(new LineBorder(Color.black, 5));
+
+    }//GEN-LAST:event_radio1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -413,22 +393,20 @@ public class Quiz extends javax.swing.JFrame {
                 //new Quiz(ArrayList array).setVisible(true);
             }
         });
-        
-               
+
     }
-    
-    public void nextButton()
-    {
+
+    public void nextButton() {
         radio1.setEnabled(true);
         radio2.setEnabled(true);
         radio3.setEnabled(true);
         radio4.setEnabled(true);
-        
+
         optionGroup.clearSelection();
-        
+
         int currentQuestion = multipleQuestion.getQuestionNumber();
         multipleQuestion = multipleQuestionsArray.get(currentQuestion);
-        
+
         number = multipleQuestion.getQuestionNumber();
         String questionNumber = multipleQuestion.getQuestionNumber() + "";
         question = multipleQuestion.getQuestion();
@@ -437,30 +415,27 @@ public class Quiz extends javax.swing.JFrame {
         option3 = multipleQuestion.getOption3();
         option4 = multipleQuestion.getOption4();
         correctAnswer = multipleQuestion.getCorrectAnswer();
-        
+
         questionJLabel.setText(questionNumber + ". " + question);
         radio1.setText(option1);
         radio2.setText(option2);
         radio3.setText(option3);
         radio4.setText(option4);
-        
+
         mainMenuJButton.setVisible(false);
         submitJButton.setVisible(true);
-        
-        image1Label.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage1Name())));
-        image2Label.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage2Name())));
-        image3Label.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage3Name())));
-        image4Label.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage4Name())));
+
+        image1Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage1Name())));
+        image2Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage2Name())));
+        image3Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage3Name())));
+        image4Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage4Name())));
 
 //        radio1.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage1Name())));
 //        radio2.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage2Name())));
 //        radio3.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage3Name())));
 //        radio4.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage4Name())));
-        
-        
-        
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton glossaryJButton;
