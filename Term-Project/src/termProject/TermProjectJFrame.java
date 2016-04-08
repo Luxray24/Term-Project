@@ -22,8 +22,6 @@ public class TermProjectJFrame extends javax.swing.JFrame {
      * Creates new form TermProjectJFrame
      */
     
-    DragDrop dragDrop;
-    
     public Quiz quiz;
     
     public int points = 0;
@@ -165,13 +163,12 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         artic = articDrag.get(0);
                 
-        new DragDrop(articDrag, artic).setVisible(true);
-        dragDrop.scoreJLabel.setText(points + " points");
+        DragDrop dragDrop = new DragDrop(articDrag, artic);
+        dragDrop.scoreJLabel.setText(points + " Points");
+        dragDrop.setVisible(true);
         
         
         articButton.setEnabled(false);
-        
-        points += 20;
         pointsLabel.setText(points + " Points");
         hasGameWon(points);
     }//GEN-LAST:event_articButtonActionPerformed
@@ -208,7 +205,10 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         marine = marineDrag.get(0);
                 
-        new DragDrop(marineDrag, marine).setVisible(true);
+        DragDrop dragDrop = new DragDrop(marineDrag, marine);
+        dragDrop.scoreJLabel.setText(points + " Points");
+        dragDrop.setVisible(true);
+        
         
         marineButton.setEnabled(false);
         
@@ -249,7 +249,9 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         rainforest = rainforestDrag.get(0);
                 
-        new DragDrop(rainforestDrag, rainforest).setVisible(true);
+        DragDrop dragDrop = new DragDrop(rainforestDrag, rainforest);
+        dragDrop.scoreJLabel.setText(points + " Points");
+        dragDrop.setVisible(true);
         
         rainforestButton.setEnabled(false);
         
@@ -299,7 +301,9 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         grassland = grasslandQuestions.get(0);
         
-        new Quiz(grasslandQuestions, grassland).setVisible(true);
+        Quiz quiz = new Quiz(grasslandQuestions, grassland);
+        quiz.scoreJLabel.setText(points + " Points");
+        quiz.setVisible(true);
         
         grasslandButton.setEnabled(false);
         
@@ -352,7 +356,9 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         freshwater = freshwaterQuestions.get(0);
         
-        new Quiz(freshwaterQuestions, freshwater).setVisible(true);
+        Quiz quiz = new Quiz(freshwaterQuestions, freshwater);
+        quiz.scoreJLabel.setText(points + " Points");
+        quiz.setVisible(true);
         
         freshwaterButton.setEnabled(false);
         

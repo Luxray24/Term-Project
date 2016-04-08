@@ -190,7 +190,7 @@ public class Quiz extends javax.swing.JFrame {
         jPanel1.add(image3Label);
         image3Label.setBounds(0, 280, 271, 197);
 
-        scoreJLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        scoreJLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         scoreJLabel.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,29 +198,28 @@ public class Quiz extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(radio4)
+                    .addComponent(radio2)
+                    .addComponent(radio1)
+                    .addComponent(radio3)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(radio4)
-                            .addComponent(radio2)
-                            .addComponent(radio1)
-                            .addComponent(radio3)
+                            .addComponent(mainMenuJButton)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(mainMenuJButton)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(glossaryJButton)
-                                        .addGap(51, 51, 51)
-                                        .addComponent(submitJButton))
-                                    .addComponent(questionJLabel)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(scoreJLabel)))
+                                .addComponent(glossaryJButton)
+                                .addGap(51, 51, 51)
+                                .addComponent(submitJButton))
+                            .addComponent(questionJLabel))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scoreJLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,9 +228,9 @@ public class Quiz extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(scoreJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
+                .addContainerGap()
+                .addComponent(scoreJLabel)
+                .addGap(132, 132, 132)
                 .addComponent(questionJLabel)
                 .addGap(49, 49, 49)
                 .addComponent(radio1)
@@ -462,7 +461,7 @@ public class Quiz extends javax.swing.JFrame {
     private javax.swing.JRadioButton radio2;
     private javax.swing.JRadioButton radio3;
     private javax.swing.JRadioButton radio4;
-    private javax.swing.JLabel scoreJLabel;
+    public javax.swing.JLabel scoreJLabel;
     private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables
 }
