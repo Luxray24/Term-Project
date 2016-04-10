@@ -39,15 +39,15 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         //quiz = new Quiz();
         
         //Intro to game!  Describes who you are and the situation at hand.
-//        ImageIcon exploreIcon; //Dolley Madison pictures
-//        String filename = "/images/explorer.jpg"; //Filename for the image
-//        exploreIcon = new ImageIcon(getClass().getResource(filename)); //Getting the image
-//        String message = " You are a wilderness explorer! \n \n" +  " Click on any of the five ecosystems, \n Arctic, Rainforest, Freshwater, Marine and Grasslands, \n To play a game and learn about how energy flows from producers to consumers!  \n \n" +
-//                         " The more ecosystems you learn about the more points you will earn! \n Have fun exploring!";
-//        String title = "Who Eats What!?"; //Title
-//        int messageType = JOptionPane.INFORMATION_MESSAGE; //Message Type as information
-//
-//        JOptionPane.showMessageDialog(null, message, title, messageType, exploreIcon); //Message Dialog introducing the game.
+        ImageIcon exploreIcon; //Dolley Madison pictures
+        String filename = "/images/explorer.jpg"; //Filename for the image
+        exploreIcon = new ImageIcon(getClass().getResource(filename)); //Getting the image
+        String message = " You are a wilderness explorer! \n \n" +  " Click on any of the five ecosystems, \n Arctic, Rainforest, Freshwater, Marine and Grasslands, \n To play a game and learn about how energy flows from producers to consumers!  \n \n" +
+                         " The more ecosystems you learn about the more points you will earn! \n Have fun exploring!";
+        String title = "Who Eats What!?"; //Title
+        int messageType = JOptionPane.INFORMATION_MESSAGE; //Message Type as information
+
+        JOptionPane.showMessageDialog(null, message, title, messageType, exploreIcon); //Message Dialog introducing the game.
 
         
     }
