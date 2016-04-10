@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,12 +27,28 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     
     public int points = 0;
     
+    DragDrop articDragDrop ;
+    
     
     
     public TermProjectJFrame() {
         initComponents();
-        //this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        
+
         //quiz = new Quiz();
+        
+        //Intro to game!  Describes who you are and the situation at hand.
+//        ImageIcon exploreIcon; //Dolley Madison pictures
+//        String filename = "/images/explorer.jpg"; //Filename for the image
+//        exploreIcon = new ImageIcon(getClass().getResource(filename)); //Getting the image
+//        String message = " You are a wilderness explorer! \n \n" +  " Click on any of the five ecosystems, \n Arctic, Rainforest, Freshwater, Marine and Grasslands, \n To play a game and learn about how energy flows from producers to consumers!  \n \n" +
+//                         " The more ecosystems you learn about the more points you will earn! \n Have fun exploring!";
+//        String title = "Who Eats What!?"; //Title
+//        int messageType = JOptionPane.INFORMATION_MESSAGE; //Message Type as information
+//
+//        JOptionPane.showMessageDialog(null, message, title, messageType, exploreIcon); //Message Dialog introducing the game.
+
         
     }
 
@@ -163,14 +180,33 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         artic = articDrag.get(0);
                 
-        DragDrop dragDrop = new DragDrop(articDrag, artic);
-        dragDrop.scoreJLabel.setText(points + " Points");
-        dragDrop.setVisible(true);
-        
+        articDragDrop = new DragDrop(articDrag, artic);
+        articDragDrop.scoreJLabel.setText(points + " Points");
+        articDragDrop.setVisible(true);
         
         articButton.setEnabled(false);
-        pointsLabel.setText(points + " Points");
-        hasGameWon(points);
+        
+        
+        
+//        if (articDragDrop.isVisible() == false)
+//        {
+//            points += 20;
+//            pointsLabel.setText(points + " Points");
+//            hasGameWon(points);
+//        }
+        
+//        while (articDragDrop.isVisible())
+//        {
+//            if (articDragDrop.isVisible() == false)
+//            {
+//                points += 20;
+//                pointsLabel.setText(points + " Points");
+//                hasGameWon(points);
+//                break;
+//            }
+//        }
+
+        
     }//GEN-LAST:event_articButtonActionPerformed
 
     private void marineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marineButtonActionPerformed
@@ -206,15 +242,16 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         marine = marineDrag.get(0);
                 
         DragDrop dragDrop = new DragDrop(marineDrag, marine);
-        dragDrop.scoreJLabel.setText(points + " Points");
         dragDrop.setVisible(true);
-        
         
         marineButton.setEnabled(false);
         
-        points += 20;
-        pointsLabel.setText(points + " Points");
-        hasGameWon(points);
+        if (dragDrop.isVisible() == false)
+        {
+            points += 20;
+            pointsLabel.setText(points + " Points");
+            hasGameWon(points);
+        }
     }//GEN-LAST:event_marineButtonActionPerformed
 
     private void rainforestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rainforestButtonActionPerformed
@@ -250,14 +287,16 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         rainforest = rainforestDrag.get(0);
                 
         DragDrop dragDrop = new DragDrop(rainforestDrag, rainforest);
-        dragDrop.scoreJLabel.setText(points + " Points");
         dragDrop.setVisible(true);
         
         rainforestButton.setEnabled(false);
         
-        points += 20;
-        pointsLabel.setText(points + " Points");
-        hasGameWon(points);
+        if (dragDrop.isVisible() == false)
+        {
+            points += 20;
+            pointsLabel.setText(points + " Points");
+            hasGameWon(points);
+        }
     }//GEN-LAST:event_rainforestButtonActionPerformed
 
     private void grasslandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grasslandButtonActionPerformed
@@ -307,9 +346,12 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         grasslandButton.setEnabled(false);
         
-        points += 20;
-        pointsLabel.setText(points + " Points");
-        hasGameWon(points);
+        if (quiz.isVisible() == false)
+        {
+            points += 20;
+            pointsLabel.setText(points + " Points");
+            hasGameWon(points);
+        }
     }//GEN-LAST:event_grasslandButtonActionPerformed
 
     private void freshwaterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freshwaterButtonActionPerformed
@@ -362,10 +404,12 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         freshwaterButton.setEnabled(false);
         
-        points += 20;
-        pointsLabel.setText(points + " Points");
-        
-        hasGameWon(points);
+        if (quiz.isVisible() == false)
+        {
+            points += 20;
+            pointsLabel.setText(points + " Points");
+            hasGameWon(points);
+        }
     }//GEN-LAST:event_freshwaterButtonActionPerformed
 
     /**

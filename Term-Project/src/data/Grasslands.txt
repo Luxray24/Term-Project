@@ -2,19 +2,27 @@
 1
 Which animal isn't a carnivore in the Grassland ecosystem?
 Lion
+/images/lion.jpg
 Cheetah
+/images/cheetah.jpg
 Hyena
+/images/hyena.jpg
 Gazelles
+/images/gazelle.jpg
 Gazelles
 Oops! Remember a carnivore is an animal that eats other animals. Try Again!
 Good job! You remembered that gazelles only eat plants. Continue to the next question!
 // Question 2
 2
 Which of the following is a producer in the Savannah?
-Lion
-Gazelles
-Star Grass
 Warthog
+/images/warthog.jpg
+Gazelles
+/images/gazelle.jpg
+Star Grass
+/images/stargrass.jpg
+Lion
+/images/lion.jpg
 Star Grass
 Oops! Remember a producer is the first level of the food chain. Try Again!
 Good job! You remembered that star grass is a food source for other animals. Continue to the next question!
@@ -22,9 +30,13 @@ Good job! You remembered that star grass is a food source for other animals. Con
 3
 A consumer that eats both animals and plants are called a ______. 
 Omnivore
+/images/Africa.jpg
 Producer
+
 Herbivore
-Carnivore
+
+Consumer
+
 Omnivore
 Oops! See the glossary if you are really stuck! Try Again!
 Good job! Continue to the next question!

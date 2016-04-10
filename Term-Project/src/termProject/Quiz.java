@@ -111,9 +111,9 @@ public class Quiz extends javax.swing.JFrame {
         image4Label = new javax.swing.JLabel();
         image3Label = new javax.swing.JLabel();
         scoreJLabel = new javax.swing.JLabel();
+        directionsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1073, 679));
         setMinimumSize(new java.awt.Dimension(1073, 679));
 
         questionJLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -169,84 +169,97 @@ public class Quiz extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(null);
 
         image1Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         image1Label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        image1Label.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(image1Label);
         image1Label.setBounds(0, 80, 540, 400);
 
-        image2Label.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        image2Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        image2Label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(image2Label);
         image2Label.setBounds(270, 80, 271, 197);
 
-        image4Label.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        image4Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        image4Label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(image4Label);
         image4Label.setBounds(270, 280, 271, 197);
 
-        image3Label.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        image3Label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        image3Label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(image3Label);
         image3Label.setBounds(0, 280, 271, 197);
 
         scoreJLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         scoreJLabel.setText("jLabel1");
 
+        directionsLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        directionsLabel.setText("Click on the correct answer to the question!  If you are stuck click on the Glossary for some help!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radio4)
-                    .addComponent(radio2)
-                    .addComponent(radio1)
-                    .addComponent(radio3)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mainMenuJButton)
+                            .addComponent(directionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(glossaryJButton)
-                                .addGap(51, 51, 51)
-                                .addComponent(submitJButton))
-                            .addComponent(questionJLabel))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(mainMenuJButton)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(glossaryJButton)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(submitJButton)))
+                                .addGap(195, 195, 195)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radio4)
+                            .addComponent(radio2)
+                            .addComponent(radio1)
+                            .addComponent(radio3)
+                            .addComponent(questionJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(scoreJLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(scoreJLabel)
-                .addGap(132, 132, 132)
-                .addComponent(questionJLabel)
-                .addGap(49, 49, 49)
-                .addComponent(radio1)
-                .addGap(18, 18, 18)
-                .addComponent(radio2)
-                .addGap(18, 18, 18)
-                .addComponent(radio3)
-                .addGap(18, 18, 18)
-                .addComponent(radio4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(glossaryJButton)
-                    .addComponent(submitJButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainMenuJButton)
-                .addGap(240, 240, 240))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(scoreJLabel)
+                        .addGap(135, 135, 135)
+                        .addComponent(questionJLabel)
+                        .addGap(52, 52, 52)
+                        .addComponent(radio1)
+                        .addGap(18, 18, 18)
+                        .addComponent(radio2)
+                        .addGap(18, 18, 18)
+                        .addComponent(radio3)
+                        .addGap(18, 18, 18)
+                        .addComponent(radio4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(glossaryJButton)
+                            .addComponent(submitJButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mainMenuJButton)
+                        .addGap(120, 120, 120))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(directionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -358,15 +371,10 @@ public class Quiz extends javax.swing.JFrame {
 
     private void radio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio1ActionPerformed
         // TODO add your handling code here:
-
-
     }//GEN-LAST:event_radio1ActionPerformed
 
     private void radio1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radio1MouseClicked
-        // TODO add your handling code here:
-
-        radio1.setBorder(new LineBorder(Color.black, 5));
-
+        // TODO add your handling code here:   
     }//GEN-LAST:event_radio1MouseClicked
 
     /**
@@ -439,15 +447,12 @@ public class Quiz extends javax.swing.JFrame {
         image2Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage2Name())));
         image3Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage3Name())));
         image4Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage4Name())));
-
-//        radio1.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage1Name())));
-//        radio2.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage2Name())));
-//        radio3.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage3Name())));
-//        radio4.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage4Name())));
+        
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel directionsLabel;
     private javax.swing.JButton glossaryJButton;
     private javax.swing.JLabel image1Label;
     private javax.swing.JLabel image2Label;

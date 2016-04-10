@@ -1,3 +1,12 @@
-Jaguar- A large cat that lives in the rainforest
-Caiman- A small crocodile that lives in the same rainforest
-Spiders- Pure Evil kill with fire
+Producer:
+    an organism, as a plant, that is able to produce its own food from inorganic substances.
+Consumer:
+    an organism, usually an animal, that feeds on plants or other animals.
+Decomposer:
+    an organism, especially a soil bacterium or fungus, that decomposes organic material.
+Herbivore:
+    an animal that feeds on plants.
+Carnivore:
+    an animal that feeds on flesh.
+Omnivore:
+    an animal that eats food of both plant and animal origin.

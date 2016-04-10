@@ -112,8 +112,7 @@ public class DragDrop extends javax.swing.JFrame {
         setVisible(true);
     }
 
-    DragDrop() {
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,7 +149,6 @@ public class DragDrop extends javax.swing.JFrame {
         scoreJLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1257, 675));
         setMinimumSize(new java.awt.Dimension(1257, 675));
 
         panel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -266,7 +264,7 @@ public class DragDrop extends javax.swing.JFrame {
         instructions.setText("This is a Drag and Drop Game!  Click on the organism and drag and release it where you think it goes in order of this food web!");
 
         scoreJLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        scoreJLabel.setText("jLabel1");
+        scoreJLabel.setText(" ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -472,6 +470,8 @@ public class DragDrop extends javax.swing.JFrame {
         }
 
         if (tiles1 == 1 && tiles2 == 1 && tiles3 == 1 && tiles4 == 1) {
+            points += 20;
+            scoreJLabel.setText(points + " points");
             JOptionPane.showMessageDialog(null, "Congrats!  You got the food web correct!  Go back to the Main Map to choose another game!");
             mainMenuButton.setVisible(true);
             submitButton.setEnabled(false);

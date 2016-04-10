@@ -16,6 +16,8 @@ public class GlossaryJFrame extends javax.swing.JFrame {
      */
     public GlossaryJFrame() {
         initComponents();
+        
+        
     }
 
     /**
@@ -30,10 +32,11 @@ public class GlossaryJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         glossaryJTextArea = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        glossaryJTextArea.setEditable(false);
         glossaryJTextArea.setColumns(20);
-        glossaryJTextArea.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        glossaryJTextArea.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         glossaryJTextArea.setLineWrap(true);
         glossaryJTextArea.setRows(5);
         glossaryJTextArea.setWrapStyleWord(true);
@@ -43,11 +46,11 @@ public class GlossaryJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
         );
 
         pack();
