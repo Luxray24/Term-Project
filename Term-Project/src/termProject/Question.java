@@ -18,6 +18,7 @@ import java.util.ArrayList;
  */
 public class Question {
 
+    //All the factors of the Quiz JFrame/objects
     private int questionNumber;
     private String question;
     private String option1;
@@ -32,7 +33,8 @@ public class Question {
     private String image3;
     private String image4;
     
-    
+    //Constructor of class, makes each object
+    //Sets each private variable with the matching parameter
     public Question(int questionNumber, String question, String option1, String option2, String option3, String option4, String correctAnswer, String wrongMessage, String correctMessage, String image1, String image2, String image3, String image4) 
     {
         this.questionNumber = questionNumber;
@@ -51,66 +53,118 @@ public class Question {
         
     }
 
+    /**
+     * Gets the question number for the current question
+     * @return the questionNumber
+     */
     public int getQuestionNumber()
     {
         return questionNumber;
     }
     
+    /**
+     * Gets the actual question for the current question
+     * @return the question
+     */
     public String getQuestion()
     {
         return question;
     }
     
+    /**
+     * Gets option1 for the current question
+     * @return option1
+     */
     public String getOption1()
     {
         return option1;
     }
     
+    /**
+     * Gets option2 for the current question
+     * @return option2
+     */
     public String getOption2()
     {
         return option2;
     }
     
+    /**
+     * Gets option3 for the current question
+     * @return option3
+     */
     public String getOption3()
     {
         return option3;
     }
     
+    /**
+     * Gets option4 for the current question
+     * @return option4
+     */
     public String getOption4()
     {
         return option4;
     }
  
+    /**
+     * Gets the correct answer for the current question
+     * @return correct answer
+     */
     public String getCorrectAnswer()
     {
         return correctAnswer;
     }
     
+    /**
+     * Gets the wrong option chosen message for the current question
+     * @return wrong message
+     */
     public String getWrongMessage()
     {
         return wrongMessage;
     }
     
+    /**
+     * Gets the correct option chosen message for the current question
+     * @return correct message
+     */
     public String getCorrectMessage()
     {
         return correctMessage;
     }
     
+    /**
+     * Gets the Image name for option 1 for the current question
+     * @return image1 name
+     */
     public String getImage1Name()
     {
         return image1;
     }
     
+    /**
+     * Gets the Image name for option 2 for the current question
+     * @return image2 name
+     */
     public String getImage2Name()
     {
         return image2;
     }
     
+    /**
+     * Gets the Image name for option 3 for the current question
+     * @return image3 name
+     */
     public String getImage3Name()
     {
         return image3;
     }
     
+    /**
+     * Gets the Image name for option 4 for the current question
+     * @return image4 name
+     */
     public String getImage4Name()
     {
         return image4;

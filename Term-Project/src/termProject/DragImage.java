@@ -23,89 +23,70 @@ import javax.swing.RepaintManager;
  */
 public class DragImage {
     
-  static int imageWidth = 60, imageHeight = 60;
-  int imageX, imageY;
-  
-  private int place;
-  private String name;
-  private String imageSRC;
-  private int orderNumber;
-  private int actualAnimal;
+      //All the factors of the Drag Drop JFrame/objects  
+      private int place;
+      private String name;
+      private String imageSRC;
+      private int orderNumber;
+      private int actualAnimal;
 
-  Image image;
+      Image image;
 
-  public DragImage(int place, String name, String imageSRC, int orderNumber, int actualAnimal) {
-    
-    this.place = place;
-    this.name = name;
-    this.imageSRC = imageSRC;
-    this.orderNumber = orderNumber;
-    this.actualAnimal = actualAnimal;
+      //Constructor of class, makes each object
+      //Sets each private variable with the matching parameter
+      public DragImage(int place, String name, String imageSRC, int orderNumber, int actualAnimal) {
 
-    //image = i;
-    //addMouseMotionListener(this);
-  }
-  
-  public int getInitialPlace()
-  {
-      return place;
-  }
-  
-  public String getImageName()
-  {
-      return name;
-  }
-  
-  public String getImageFileName()
-  {
-      return imageSRC;
-  }
-  
-  public int getorderNumber()
-  {
-      return orderNumber;
-  }
-  
-  public int getActualAnimal()
-  {
-      return actualAnimal;
-  }
-  
-  public ImageIcon getIcon()
-  {
-      ImageIcon image = new ImageIcon( this.getClass().getResource(imageSRC) );
-      return image;
-  }
+        this.place = place;
+        this.name = name;
+        this.imageSRC = imageSRC;
+        this.orderNumber = orderNumber;
+        this.actualAnimal = actualAnimal;
+
+      }
+
+      /**
+       * Gets the initial place of the image
+       * @return place 
+       */
+      public int getInitialPlace()
+      {
+          return place;
+      }
+
+      /**
+       * Gets the name of the animal in the corresponding photo
+       * @return name
+       */
+      public String getImageName()
+      {
+          return name;
+      }
+
+      /**
+       * Gets the image file name 
+       * @return image filename
+       */
+      public String getImageFileName()
+      {
+          return imageSRC;
+      }
+
+      /**
+       * Gets the number the image is in order (1 through 4)
+       * @return order number
+       */
+      public int getorderNumber()
+      {
+          return orderNumber;
+      }
+
+      /**
+       * Gets the animal in the initial spot as the current image
+       * @return actual animal in initial spot
+       */
+      public int getActualAnimal()
+      {
+          return actualAnimal;
+      }
+
 }
-//
-//  public void mouseDragged(MouseEvent e) {
-//    imageX = e.getX();
-//    imageY = e.getY();
-//    //repaint();
-//  }
-//
-//  public void mouseMoved(MouseEvent e) {
-//  }
-//
-//  public void paint(Graphics g) {
-//    Graphics2D g2 = (Graphics2D) g;
-//
-//    //g2.drawImage(image, imageX, imageY, this);
-//  }
-//
-//  public static void main(String[] args) {
-//    String imageFile = "A.jpg";
-//    // Turn off double buffering
-//    RepaintManager.currentManager(null).setDoubleBufferingEnabled(false);
-//
-//    Image image = Toolkit.getDefaultToolkit().getImage(DragImage.class.getResource(imageFile));
-//    image = image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_DEFAULT);
-//    JFrame frame = new JFrame("DragImage");
-//    
-//    //frame.getContentPane().add(new DragImage(String name, String imageSRC, int orderNumber));
-//   // frame.setSize(300, 300);
-//    //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//    //frame.setVisible(true);
-//  }
-//
-//}

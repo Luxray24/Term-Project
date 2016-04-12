@@ -25,16 +25,14 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     
     public Quiz quiz;
     
+    //Points the player stars with
     public int points = 0;
-    
-    DragDrop articDragDrop ;
-    
-    
     
     public TermProjectJFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
         
+        finishButton.setVisible(false);
 
         //quiz = new Quiz();
         
@@ -69,6 +67,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         grasslandButton = new javax.swing.JButton();
         freshwaterButton = new javax.swing.JButton();
         pointsLabel = new javax.swing.JLabel();
+        finishButton = new javax.swing.JButton();
         backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,6 +127,15 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         gamePanel.add(pointsLabel);
         pointsLabel.setBounds(1100, 130, 210, 110);
 
+        finishButton.setText("Finish");
+        finishButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finishButtonActionPerformed(evt);
+            }
+        });
+        gamePanel.add(finishButton);
+        finishButton.setBounds(840, 690, 170, 60);
+
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Map.jpg"))); // NOI18N
         gamePanel.add(backgroundImage);
         backgroundImage.setBounds(0, 0, 1300, 990);
@@ -150,8 +158,14 @@ public class TermProjectJFrame extends javax.swing.JFrame {
 
     private void articButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_articButtonActionPerformed
         
+        //Player gets 20 points for completion of level
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        
+        //Gets the filename for the text file
         String fileName = "/data/Artic.txt";
         
+        //Makes an array list for each image
         ArrayList<DragImage> articDrag = new ArrayList<DragImage>();
         DragImage artic = null;
         
@@ -165,11 +179,11 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                     break;
                 }
                 
-                int initialPlace = Integer.parseInt(br.readLine());
-                String animalName = br.readLine();
-                String pictureFileName = br.readLine();
-                int imageOrder = Integer.parseInt(br.readLine());
-                int actualNameInThatPlace = Integer.parseInt(br.readLine());
+                int initialPlace = Integer.parseInt(br.readLine()); //Image initial place
+                String animalName = br.readLine(); //Image animal name
+                String pictureFileName = br.readLine(); //Image file name
+                int imageOrder = Integer.parseInt(br.readLine()); //Number of order (1 through 4)
+                int actualNameInThatPlace = Integer.parseInt(br.readLine()); //Number of animal in that position (1 through 4)
                 
                 DragImage newDrag = new DragImage(initialPlace, animalName, pictureFileName, imageOrder, actualNameInThatPlace);
                 articDrag.add(newDrag);
@@ -179,40 +193,30 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         }
         
         artic = articDrag.get(0);
-                
-        articDragDrop = new DragDrop(articDrag, artic);
-        articDragDrop.scoreJLabel.setText(points + " Points");
+        
+        //Creates a new Drag Drop JFrame
+        DragDrop articDragDrop = new DragDrop(articDrag, artic);
+        //Sets it as visible        
         articDragDrop.setVisible(true);
         
+        //Sets the button disabled so the player cannot play again
         articButton.setEnabled(false);
         
-        
-        
-//        if (articDragDrop.isVisible() == false)
-//        {
-//            points += 20;
-//            pointsLabel.setText(points + " Points");
-//            hasGameWon(points);
-//        }
-        
-//        while (articDragDrop.isVisible())
-//        {
-//            if (articDragDrop.isVisible() == false)
-//            {
-//                points += 20;
-//                pointsLabel.setText(points + " Points");
-//                hasGameWon(points);
-//                break;
-//            }
-//        }
-
+        //Checks to see if all the levels have been played
+        if (points == 100)
+            finishButton.setVisible(true);
         
     }//GEN-LAST:event_articButtonActionPerformed
 
     private void marineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marineButtonActionPerformed
-        // TODO add your handling code here:
+        //Player gets 20 points for completion of level
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        
+        //Gets the filename for the text file
         String fileName = "/data/Marine.txt";
         
+        //Makes an array list for each image
         ArrayList<DragImage> marineDrag = new ArrayList<DragImage>();
         DragImage marine = null;
         
@@ -226,11 +230,11 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                     break;
                 }
                 
-                int initialPlace = Integer.parseInt(br.readLine());
-                String animalName = br.readLine();
-                String pictureFileName = br.readLine();
-                int imageOrder = Integer.parseInt(br.readLine());
-                int actualNameInThatPlace = Integer.parseInt(br.readLine());
+                int initialPlace = Integer.parseInt(br.readLine()); //Image initial place
+                String animalName = br.readLine(); //Image animal name
+                String pictureFileName = br.readLine(); //Image file name
+                int imageOrder = Integer.parseInt(br.readLine()); //Number of order (1 through 4)
+                int actualNameInThatPlace = Integer.parseInt(br.readLine()); //Number of animal in that position (1 through 4)
                 
                 DragImage newDrag = new DragImage(initialPlace, animalName, pictureFileName, imageOrder, actualNameInThatPlace);
                 marineDrag.add(newDrag);
@@ -240,24 +244,30 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         }
         
         marine = marineDrag.get(0);
-                
-        DragDrop dragDrop = new DragDrop(marineDrag, marine);
-        dragDrop.setVisible(true);
         
+        //Creates a new Drag Drop JFrame
+        DragDrop marineDragDrop = new DragDrop(marineDrag, marine);
+        //Sets it as visible        
+        marineDragDrop.setVisible(true);
+        
+        //Sets the button disabled so the player cannot play again
         marineButton.setEnabled(false);
         
-        if (dragDrop.isVisible() == false)
-        {
-            points += 20;
-            pointsLabel.setText(points + " Points");
-            hasGameWon(points);
-        }
+        //Checks to see if all the levels have been played
+        if (points == 100)
+            finishButton.setVisible(true);
+               
     }//GEN-LAST:event_marineButtonActionPerformed
 
     private void rainforestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rainforestButtonActionPerformed
-        // TODO add your handling code here:
+        //Player gets 20 points for completion of level
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        
+        //Gets the filename for the text file
         String fileName = "/data/Rainforest.txt";
         
+        //Makes an array list for each image
         ArrayList<DragImage> rainforestDrag = new ArrayList<DragImage>();
         DragImage rainforest = null;
         
@@ -271,11 +281,11 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                     break;
                 }
                 
-                int initialPlace = Integer.parseInt(br.readLine());
-                String animalName = br.readLine();
-                String pictureFileName = br.readLine();
-                int imageOrder = Integer.parseInt(br.readLine());
-                int actualNameInThatPlace = Integer.parseInt(br.readLine());
+                int initialPlace = Integer.parseInt(br.readLine()); //Image initial place
+                String animalName = br.readLine(); //Image animal name
+                String pictureFileName = br.readLine(); //Image file name
+                int imageOrder = Integer.parseInt(br.readLine()); //Number of order (1 through 4)
+                int actualNameInThatPlace = Integer.parseInt(br.readLine()); //Number of animal in that position (1 through 4)
                 
                 DragImage newDrag = new DragImage(initialPlace, animalName, pictureFileName, imageOrder, actualNameInThatPlace);
                 rainforestDrag.add(newDrag);
@@ -285,24 +295,32 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         }
         
         rainforest = rainforestDrag.get(0);
-                
-        DragDrop dragDrop = new DragDrop(rainforestDrag, rainforest);
-        dragDrop.setVisible(true);
         
+        //Creates a new Drag Drop JFrame
+        DragDrop rainforestDragDrop = new DragDrop(rainforestDrag, rainforest);
+        //Sets it as visible        
+        rainforestDragDrop.setVisible(true);
+        
+        //Sets the button disabled so the player cannot play again
         rainforestButton.setEnabled(false);
         
-        if (dragDrop.isVisible() == false)
-        {
-            points += 20;
-            pointsLabel.setText(points + " Points");
-            hasGameWon(points);
-        }
+        //Checks to see if all the levels have been played
+        if (points == 100)
+            finishButton.setVisible(true);
+        
     }//GEN-LAST:event_rainforestButtonActionPerformed
 
     private void grasslandButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grasslandButtonActionPerformed
-        // Multiple Choice Questions
+        
+        //Player gets 20 points for completion of level
+        points += 20;
+        pointsLabel.setText(points + " Points");
+        
+
+        //Gets the filename for the text file
         String fileName = "/data/Grasslands.txt";
         
+        //Makes an array list for each image
         ArrayList<Question> grasslandQuestions = new ArrayList<Question>();
         Question grassland = null;
         
@@ -316,19 +334,19 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                 if (comment == null) {
                     break;
                 }
-                int questionNumber = Integer.parseInt(br.readLine());
-                String question = br.readLine();
-                String option1 = br.readLine();
-                String option1ImageName = br.readLine();
-                String option2 = br.readLine();
-                String option2ImageName = br.readLine();
-                String option3 = br.readLine();
-                String option3ImageName = br.readLine();
-                String option4 = br.readLine();
-                String option4ImageName = br.readLine();
-                String correctAnswer = br.readLine();
-                String wrongMessage = br.readLine();
-                String correctMessage = br.readLine();
+                int questionNumber = Integer.parseInt(br.readLine()); //Quesrion number
+                String question = br.readLine(); //The question itself
+                String option1 = br.readLine(); //Option A Answer
+                String option1ImageName = br.readLine(); //Image that corresponds with A
+                String option2 = br.readLine(); //Otion B Answer
+                String option2ImageName = br.readLine(); //iImage that corresponds with B
+                String option3 = br.readLine(); //Option C Answer
+                String option3ImageName = br.readLine(); //Image that corresponds with C
+                String option4 = br.readLine(); // Option D Answer
+                String option4ImageName = br.readLine(); // Image that corresponds with D
+                String correctAnswer = br.readLine(); //The correct answer
+                String wrongMessage = br.readLine(); // Incorrect option chosen message
+                String correctMessage = br.readLine(); // Correct option chosen message
                 
                 Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer, wrongMessage, correctMessage, option1ImageName, option2ImageName, option3ImageName, option4ImageName);
                 grasslandQuestions.add(newQuestion);
@@ -340,29 +358,31 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         grassland = grasslandQuestions.get(0);
         
+        //Creates a new Quiz JFrame
         Quiz quiz = new Quiz(grasslandQuestions, grassland);
-        quiz.scoreJLabel.setText(points + " Points");
+        //Sets it as visible        
         quiz.setVisible(true);
         
+        //Sets the button disabled so the player cannot play again
         grasslandButton.setEnabled(false);
         
-        if (quiz.isVisible() == false)
-        {
-            points += 20;
-            pointsLabel.setText(points + " Points");
-            hasGameWon(points);
-        }
+        //Checks to see if all the levels have been played
+        if (points == 100)
+            finishButton.setVisible(true);
     }//GEN-LAST:event_grasslandButtonActionPerformed
 
     private void freshwaterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_freshwaterButtonActionPerformed
-        // Multiple Choice Questions
-        String fileName = "/data/Freshwater.txt";
-        String imageSRC = "/images/Freshwater.jpg";
+        //Player gets 20 points for completion of level
+        points += 20;
+        pointsLabel.setText(points + " Points");
         
+
+        //Gets the filename for the text file
+        String fileName = "/data/Freshwater.txt";
+        
+        //Makes an array list for each image
         ArrayList<Question> freshwaterQuestions = new ArrayList<Question>();
         Question freshwater = null;
-        
-        //importQuestionFiles(filename, grasslandQuestions);
         
         try {
             InputStreamReader isr = new InputStreamReader(
@@ -374,19 +394,19 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                 if (comment == null) {
                     break;
                 }
-                int questionNumber = Integer.parseInt(br.readLine());
-                String question = br.readLine();
-                String option1 = br.readLine();
-                String option1ImageName = br.readLine();
-                String option2 = br.readLine();
-                String option2ImageName = br.readLine();
-                String option3 = br.readLine();
-                String option3ImageName = br.readLine();
-                String option4 = br.readLine();
-                String option4ImageName = br.readLine();
-                String correctAnswer = br.readLine();
-                String wrongMessage = br.readLine();
-                String correctMessage = br.readLine();
+                int questionNumber = Integer.parseInt(br.readLine()); //Quesrion number
+                String question = br.readLine(); //The question itself
+                String option1 = br.readLine(); //Option A Answer
+                String option1ImageName = br.readLine(); //Image that corresponds with A
+                String option2 = br.readLine(); //Otion B Answer
+                String option2ImageName = br.readLine(); //iImage that corresponds with B
+                String option3 = br.readLine(); //Option C Answer
+                String option3ImageName = br.readLine(); //Image that corresponds with C
+                String option4 = br.readLine(); // Option D Answer
+                String option4ImageName = br.readLine(); // Image that corresponds with D
+                String correctAnswer = br.readLine(); //The correct answer
+                String wrongMessage = br.readLine(); // Incorrect option chosen message
+                String correctMessage = br.readLine(); // Correct option chosen message
                 
                 Question newQuestion = new Question(questionNumber, question, option1, option2, option3, option4, correctAnswer, wrongMessage, correctMessage, option1ImageName, option2ImageName, option3ImageName, option4ImageName);
                 freshwaterQuestions.add(newQuestion);
@@ -398,19 +418,27 @@ public class TermProjectJFrame extends javax.swing.JFrame {
         
         freshwater = freshwaterQuestions.get(0);
         
+        //Creates a new Quiz JFrame
         Quiz quiz = new Quiz(freshwaterQuestions, freshwater);
-        quiz.scoreJLabel.setText(points + " Points");
+        //Sets it as visible        
         quiz.setVisible(true);
         
+        //Sets the button disabled so the player cannot play again
         freshwaterButton.setEnabled(false);
         
-        if (quiz.isVisible() == false)
-        {
-            points += 20;
-            pointsLabel.setText(points + " Points");
-            hasGameWon(points);
-        }
+        //Checks to see if all the levels have been played
+        if (points == 100)
+            finishButton.setVisible(true);
+        
     }//GEN-LAST:event_freshwaterButtonActionPerformed
+
+    private void finishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishButtonActionPerformed
+        // TODO add your handling code here:
+        
+        //Checks to see if the player has won
+        hasGameWon(points);
+        
+    }//GEN-LAST:event_finishButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,20 +477,27 @@ public class TermProjectJFrame extends javax.swing.JFrame {
                
     }
     
+    /**
+     * Checks to see if the player has won the game
+     * Gives option to play again or to quit
+     * @param points The total points the player has
+     */
     public void hasGameWon(int points)
     {
         if (points == 100)
         {
+            //Gives message of praise and gives option to play again
             int choice = JOptionPane.showConfirmDialog(this, "Congrats!  You have won the game!  Would you like to play again?", "Yay! You won!", JOptionPane.YES_NO_OPTION);
             if (choice == JOptionPane.YES_OPTION) //If players choose to play again
             {
-                points = 0;
+                points = 0; //Sets points to 0
                 pointsLabel.setText(points + " Points");
-                rainforestButton.setEnabled(true);
+                rainforestButton.setEnabled(true); //Sets all buttons back as enabled for replaying
                 articButton.setEnabled(true);
                 marineButton.setEnabled(true);
                 grasslandButton.setEnabled(true);
                 freshwaterButton.setEnabled(true);
+                finishButton.setVisible(false);
             }
             else //Exit game with another game
                 System.exit(1);
@@ -474,6 +509,7 @@ public class TermProjectJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton articButton;
     private javax.swing.JLabel backgroundImage;
+    private javax.swing.JButton finishButton;
     private javax.swing.JButton freshwaterButton;
     private javax.swing.JPanel gamePanel;
     private javax.swing.JButton grasslandButton;

@@ -25,12 +25,13 @@ public class Quiz extends javax.swing.JFrame {
     /**
      * Creates new form quizJFrame
      */
+    
+    
+    //Makes an array for the questions
     ArrayList<Question> multipleQuestionsArray = new ArrayList<Question>();
     Question multipleQuestion = null;
 
-    String filename = "/data/Glossary.txt";
-    String glossary = "";
-    String endOfFileTest = "";
+    //Each factor of the object in the array
     int number;
     int questionNumber;
     String question;
@@ -41,8 +42,6 @@ public class Quiz extends javax.swing.JFrame {
     String correctAnswer;
     String wrongMessage;
     String correctMessage;
-
-    GlossaryJFrame glossaryJFrame = new GlossaryJFrame();
 
     int size;
 
@@ -55,11 +54,14 @@ public class Quiz extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mainMenuJButton.setVisible(false);
 
+        //Gets the array and the object from the paramters
         multipleQuestionsArray = array;
         multipleQuestion = objQuestion;
 
+        //Gets the size of the array
         size = multipleQuestionsArray.size();
 
+        //Gets all the factors of the question
         number = multipleQuestion.getQuestionNumber();
         String questionNumber = multipleQuestion.getQuestionNumber() + "";
         question = multipleQuestion.getQuestion();
@@ -69,17 +71,14 @@ public class Quiz extends javax.swing.JFrame {
         option4 = multipleQuestion.getOption4();
         correctAnswer = multipleQuestion.getCorrectAnswer();
 
+        //Sets the factors of the question (Text)
         questionJLabel.setText(questionNumber + ". " + question);
         radio1.setText(option1);
         radio2.setText(option2);
         radio3.setText(option3);
         radio4.setText(option4);
-
-//        radio1.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage1Name())));
-//        radio2.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage2Name())));
-//        radio3.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage3Name())));
-//        radio4.setIcon(new ImageIcon( this.getClass().getResource(multipleQuestion.getImage4Name())));
-//        
+        
+        //Sets the images for the question
         image1Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage1Name())));
         image2Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage2Name())));
         image3Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage3Name())));
@@ -110,7 +109,6 @@ public class Quiz extends javax.swing.JFrame {
         image2Label = new javax.swing.JLabel();
         image4Label = new javax.swing.JLabel();
         image3Label = new javax.swing.JLabel();
-        scoreJLabel = new javax.swing.JLabel();
         directionsLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -191,9 +189,6 @@ public class Quiz extends javax.swing.JFrame {
         jPanel1.add(image3Label);
         image3Label.setBounds(0, 280, 271, 197);
 
-        scoreJLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        scoreJLabel.setText("jLabel1");
-
         directionsLabel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         directionsLabel.setText("Click on the correct answer to the question!  If you are stuck click on the Glossary for some help!");
 
@@ -217,7 +212,7 @@ public class Quiz extends javax.swing.JFrame {
                                         .addComponent(submitJButton)))
                                 .addGap(195, 195, 195)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(15, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(radio4)
@@ -226,10 +221,6 @@ public class Quiz extends javax.swing.JFrame {
                             .addComponent(radio3)
                             .addComponent(questionJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(scoreJLabel)
-                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,8 +228,7 @@ public class Quiz extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(scoreJLabel)
-                        .addGap(135, 135, 135)
+                        .addGap(164, 164, 164)
                         .addComponent(questionJLabel)
                         .addGap(52, 52, 52)
                         .addComponent(radio1)
@@ -267,75 +257,76 @@ public class Quiz extends javax.swing.JFrame {
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
+        //Checks to see if the chosen option is correct
         if (radio1.isSelected()) {
-            if (option1.equals(correctAnswer)) {
-                if (multipleQuestion.getQuestionNumber() == size) {
-                    mainMenuJButton.setVisible(true);
-                    submitJButton.setEnabled(false);
+            if (option1.equals(correctAnswer)) { //Checks to see if the first option is the correct option
+                if (multipleQuestion.getQuestionNumber() == size) { //Checks to see if this is the last question of the array
+                    mainMenuJButton.setVisible(true); //Sets the main menu button as visible
+                    submitJButton.setEnabled(false); //Sets all other buttons as disabled
                     radio1.setEnabled(false);
                     radio2.setEnabled(false);
                     radio3.setEnabled(false);
                     radio4.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
-                } else {
+                } else { //If it isn't the last question, it just goes to the next question
                     JOptionPane.showMessageDialog(null, multipleQuestion.getCorrectMessage());
                     nextButton();
                 }
-            } else {
+            } else { //Shows a message for an inncorect option chosen
                 radio1.setEnabled(false);
                 JOptionPane.showMessageDialog(null, multipleQuestion.getWrongMessage());
             }
         } else if (radio2.isSelected()) {
-            if (option2.equals(correctAnswer)) {
-                if (multipleQuestion.getQuestionNumber() == size) {
-                    mainMenuJButton.setVisible(true);
-                    submitJButton.setEnabled(false);
+            if (option2.equals(correctAnswer)) { //Checks to see if the first option is the correct option
+                if (multipleQuestion.getQuestionNumber() == size) { //Checks to see if this is the last question of the array
+                    mainMenuJButton.setVisible(true); //Sets the main menu button as visible
+                    submitJButton.setEnabled(false); //Sets all other buttons as disabled
                     radio1.setEnabled(false);
                     radio2.setEnabled(false);
                     radio3.setEnabled(false);
                     radio4.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
-                } else {
+                } else { //If it isn't the last question, it just goes to the next question
                     JOptionPane.showMessageDialog(null, multipleQuestion.getCorrectMessage());
                     nextButton();
-                }
-            } else {
+                } 
+            } else { //Shows a message for an inncorect option chosen
                 radio2.setEnabled(false);
                 JOptionPane.showMessageDialog(null, multipleQuestion.getWrongMessage());
             }
         } else if (radio3.isSelected()) {
-            if (option3.equals(correctAnswer)) {
-                if (multipleQuestion.getQuestionNumber() == size) {
-                    mainMenuJButton.setVisible(true);
-                    submitJButton.setEnabled(false);
+            if (option3.equals(correctAnswer)) { //Checks to see if the first option is the correct option
+                if (multipleQuestion.getQuestionNumber() == size) { //Checks to see if this is the last question of the array
+                    mainMenuJButton.setVisible(true); //Sets the main menu button as visible
+                    submitJButton.setEnabled(false); //Sets all other buttons as disabled
                     radio1.setEnabled(false);
                     radio2.setEnabled(false);
                     radio3.setEnabled(false);
                     radio4.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
-                } else {
+                } else { //If it isn't the last question, it just goes to the next question
                     JOptionPane.showMessageDialog(null, multipleQuestion.getCorrectMessage());
                     nextButton();
                 }
-            } else {
+            } else { //Shows a message for an inncorect option chosen
                 radio3.setEnabled(false);
                 JOptionPane.showMessageDialog(null, multipleQuestion.getWrongMessage());
             }
         } else if (radio4.isSelected()) {
-            if (option4.equals(correctAnswer)) {
-                if (multipleQuestion.getQuestionNumber() == size) {
-                    mainMenuJButton.setVisible(true);
-                    submitJButton.setEnabled(false);
+            if (option4.equals(correctAnswer)) { //Checks to see if the first option is the correct option
+                if (multipleQuestion.getQuestionNumber() == size) { //Checks to see if this is the last question of the array
+                    mainMenuJButton.setVisible(true); //Sets the main menu button as visible
+                    submitJButton.setEnabled(false); //Sets all other buttons as disabled
                     radio1.setEnabled(false);
                     radio2.setEnabled(false);
                     radio3.setEnabled(false);
                     radio4.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "Congrats!  You got through all the questions!  Go back to the Main Map to choose another game!");
-                } else {
+                } else { //If it isn't the last question, it just goes to the next question
                     JOptionPane.showMessageDialog(null, multipleQuestion.getCorrectMessage());
                     nextButton();
                 }
-            } else {
+            } else { //Shows a message for an inncorect option chosen
                 radio4.setEnabled(false);
                 JOptionPane.showMessageDialog(null, multipleQuestion.getWrongMessage());
             }
@@ -346,11 +337,21 @@ public class Quiz extends javax.swing.JFrame {
 
     private void mainMenuJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuJButtonActionPerformed
 
+        //Set is as invisble
         this.setVisible(false);
-
+        
     }//GEN-LAST:event_mainMenuJButtonActionPerformed
 
     private void glossaryJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_glossaryJButtonActionPerformed
+        //Jake and Mark
+        
+        GlossaryJFrame glossaryJFrame = new GlossaryJFrame();
+        
+        String filename = "/data/Glossary.txt";
+        String glossary = "";
+        String endOfFileTest = "";
+    
+        
         try {
             InputStreamReader isr = new InputStreamReader(
                     this.getClass().getResourceAsStream(filename));
@@ -367,6 +368,7 @@ public class Quiz extends javax.swing.JFrame {
         }
         glossaryJFrame.glossaryJTextArea.setText(glossary);
         glossaryJFrame.setVisible(true);
+        
     }//GEN-LAST:event_glossaryJButtonActionPerformed
 
     private void radio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio1ActionPerformed
@@ -415,16 +417,21 @@ public class Quiz extends javax.swing.JFrame {
     }
 
     public void nextButton() {
+        
+        //Sets the buttons as enabled (in case one was disabled)
         radio1.setEnabled(true);
         radio2.setEnabled(true);
         radio3.setEnabled(true);
         radio4.setEnabled(true);
 
+        //Sets the buttons as unselected
         optionGroup.clearSelection();
 
+        //Gets the current number question and gets the next question
         int currentQuestion = multipleQuestion.getQuestionNumber();
         multipleQuestion = multipleQuestionsArray.get(currentQuestion);
 
+        //Gets all the factors of the question
         number = multipleQuestion.getQuestionNumber();
         String questionNumber = multipleQuestion.getQuestionNumber() + "";
         question = multipleQuestion.getQuestion();
@@ -434,19 +441,20 @@ public class Quiz extends javax.swing.JFrame {
         option4 = multipleQuestion.getOption4();
         correctAnswer = multipleQuestion.getCorrectAnswer();
 
+        //Sets the factors of the question (Text)
         questionJLabel.setText(questionNumber + ". " + question);
         radio1.setText(option1);
         radio2.setText(option2);
         radio3.setText(option3);
         radio4.setText(option4);
-
-        mainMenuJButton.setVisible(false);
-        submitJButton.setVisible(true);
-
+        
+        //Sets the images for the question
         image1Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage1Name())));
         image2Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage2Name())));
         image3Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage3Name())));
         image4Label.setIcon(new ImageIcon(this.getClass().getResource(multipleQuestion.getImage4Name())));
+        
+        
         
     }
 
@@ -466,7 +474,6 @@ public class Quiz extends javax.swing.JFrame {
     private javax.swing.JRadioButton radio2;
     private javax.swing.JRadioButton radio3;
     private javax.swing.JRadioButton radio4;
-    public javax.swing.JLabel scoreJLabel;
     private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,7 +27,7 @@ public class DragDrop extends javax.swing.JFrame {
     ArrayList<DragImage> imageDragDrop = new ArrayList<DragImage>();
     DragImage imageObject = null;
 
-    int points;
+    //The final Panel placements.  If it is a 0 it is empty, if it is a 1 it is filled correctly
     int tiles1;
     int tiles2;
     int tiles3;
@@ -41,17 +41,21 @@ public class DragDrop extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mainMenuButton.setVisible(false);
 
+        //Sets the text as ""
         endingImage1.setText("");
         endingImage2.setText("");
         endingImage3.setText("");
         endingImage4.setText("");
+        
+        //Gets the array and the object from the paramters
         imageDragDrop = array;
         imageObject = imageDrag;
 
+        //Sets the image and the text for each panel in order of the given array
         for (int i = 0; i < 4; i++) {
-            imageObject = imageDragDrop.get(i);
-            int place = imageObject.getInitialPlace();
-            if (place == 1) {
+            imageObject = imageDragDrop.get(i); //gets the image object
+            int place = imageObject.getInitialPlace();//finds where in the initial order it is in and places it there and sets the image and text
+            if (place == 1) { 
                 startingImage1.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
                 startingImage1.setText(imageObject.getImageName());
             } else if (place == 2) {
@@ -66,6 +70,8 @@ public class DragDrop extends javax.swing.JFrame {
             }
         }
 
+        
+        //Ads a Mouse Listener and Transfer Handler
         MouseListener ml = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -91,16 +97,19 @@ public class DragDrop extends javax.swing.JFrame {
             }
         };
 
+        //Adds a mouse listener to the starting image JLabels
         startingImage1.addMouseListener(ml);
         startingImage2.addMouseListener(ml);
         startingImage3.addMouseListener(ml);
         startingImage4.addMouseListener(ml);
 
+        //Adds a transfer handler to the starting JLabels (text)
         startingImage1.setTransferHandler(new TransferHandler("text"));
         startingImage4.setTransferHandler(new TransferHandler("text"));
         startingImage2.setTransferHandler(new TransferHandler("text"));
         startingImage3.setTransferHandler(new TransferHandler("text"));
 
+        //Adds a transfer handler to the ending JLabels (text)
         endingImage1.setTransferHandler(new TransferHandler("text"));
         endingImage2.setTransferHandler(new TransferHandler("text"));
         endingImage3.setTransferHandler(new TransferHandler("text"));
@@ -146,7 +155,6 @@ public class DragDrop extends javax.swing.JFrame {
         eat3 = new javax.swing.JLabel();
         mainMenuButton = new javax.swing.JButton();
         instructions = new javax.swing.JLabel();
-        scoreJLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1257, 675));
@@ -263,9 +271,6 @@ public class DragDrop extends javax.swing.JFrame {
         instructions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         instructions.setText("This is a Drag and Drop Game!  Click on the organism and drag and release it where you think it goes in order of this food web!");
 
-        scoreJLabel.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        scoreJLabel.setText(" ");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -289,15 +294,10 @@ public class DragDrop extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addComponent(instructions))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(panel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(eat1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(scoreJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(70, 70, 70)
+                        .addComponent(panel5, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eat1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
@@ -318,13 +318,8 @@ public class DragDrop extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(scoreJLabel)))
+                .addGap(18, 18, 18)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
@@ -365,12 +360,15 @@ public class DragDrop extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
 
-        imageObject = imageDragDrop.get(0);
-        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1);
-        if (endingImage1.getText() == imageObject.getImageName()) {
+        //FIRST SLOT IN ARRAY
+        imageObject = imageDragDrop.get(0); //Gets the first in array
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1); //gets the animal that is in its place
+        if (endingImage1.getText() == imageObject.getImageName()) { //Checks to see if the ending text is the same as the animal that is supposed to be there
 
+            //If yes, it sets the image to show that it is correct with a black border
             endingImage1.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
             endingImage1.setBorder(new LineBorder(Color.black, 5));
+            //Goes through initial panels, and sets the mouse listener and transfer handler off for the corresponding image 
             if (imageObject.getInitialPlace() == 1) {
                 startingImage1.addMouseListener(null);
                 startingImage1.setTransferHandler(null);
@@ -384,19 +382,24 @@ public class DragDrop extends javax.swing.JFrame {
                 startingImage4.addMouseListener(null);
                 startingImage4.setTransferHandler(null);
             }
+            //sets the mouse listener and transfer handler off for the final image 
             endingImage1.addMouseListener(null);
             endingImage1.setTransferHandler(null);
-            tiles1 = 1;
-        } else {
+            tiles1 = 1; //Sets it as complete
+        } else { //Clears the text
             endingImage1.setText(null);
         }
+        
+        
+        //SECOND IN ARRAY
+        imageObject = imageDragDrop.get(1); //Gets the first in array
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1); //gets the animal that is in its place
+        if (endingImage2.getText() == imageObject.getImageName()) { //Checks to see if the ending text is the same as the animal that is supposed to be there
 
-        imageObject = imageDragDrop.get(1);
-        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1);
-        if (endingImage2.getText() == imageObject.getImageName()) {
-
+            //If yes, it sets the image to show that it is correct with a black border
             endingImage2.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
             endingImage2.setBorder(new LineBorder(Color.black, 5));
+            //Goes through initial panels, and sets the mouse listener and transfer handler off for the corresponding image 
             if (imageObject.getInitialPlace() == 1) {
                 startingImage1.addMouseListener(null);
                 startingImage1.setTransferHandler(null);
@@ -410,19 +413,24 @@ public class DragDrop extends javax.swing.JFrame {
                 startingImage4.addMouseListener(null);
                 startingImage4.setTransferHandler(null);
             }
+            //sets the mouse listener and transfer handler off for the final image 
             endingImage2.addMouseListener(null);
             endingImage2.setTransferHandler(null);
-            tiles2 = 1;
-        } else {
+            tiles2 = 1; //Sets it as complete
+        } else { //Clears the text
             endingImage2.setText(null);
         }
+        
+        
+        //GETS THIRD IN ARRAY
+        imageObject = imageDragDrop.get(2); //Gets the first in array
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1); //gets the animal that is in its place
+        if (endingImage3.getText() == imageObject.getImageName()) { //Checks to see if the ending text is the same as the animal that is supposed to be there
 
-        imageObject = imageDragDrop.get(2);
-        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1);
-        if (endingImage3.getText() == imageObject.getImageName()) {
-
+            //If yes, it sets the image to show that it is correct with a black border
             endingImage3.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
             endingImage3.setBorder(new LineBorder(Color.black, 5));
+            //Goes through initial panels, and sets the mouse listener and transfer handler off for the corresponding image 
             if (imageObject.getInitialPlace() == 1) {
                 startingImage1.addMouseListener(null);
                 startingImage1.setTransferHandler(null);
@@ -436,19 +444,24 @@ public class DragDrop extends javax.swing.JFrame {
                 startingImage4.addMouseListener(null);
                 startingImage4.setTransferHandler(null);
             }
+            //sets the mouse listener and transfer handler off for the final image 
             endingImage3.addMouseListener(null);
             endingImage3.setTransferHandler(null);
-            tiles3 = 1;
-        } else {
+            tiles3 = 1; //Sets it as complete
+        } else { //Clears the text
             endingImage3.setText(null);
         }
+        
+        
+        //GETS FINAL IN ARRAY
+        imageObject = imageDragDrop.get(3); //Gets the first in array
+        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1); //gets the animal that is in its place
+        if (endingImage4.getText() == imageObject.getImageName()) { //Checks to see if the ending text is the same as the animal that is supposed to be there
 
-        imageObject = imageDragDrop.get(3);
-        imageObject = imageDragDrop.get(imageObject.getActualAnimal() - 1);
-        if (endingImage4.getText() == imageObject.getImageName()) {
-
+            //If yes, it sets the image to show that it is correct with a black border
             endingImage4.setIcon(new ImageIcon(this.getClass().getResource(imageObject.getImageFileName())));
             endingImage4.setBorder(new LineBorder(Color.black, 5));
+            //Goes through initial panels, and sets the mouse listener and transfer handler off for the corresponding image 
             if (imageObject.getInitialPlace() == 1) {
                 startingImage1.addMouseListener(null);
                 startingImage1.setTransferHandler(null);
@@ -462,20 +475,21 @@ public class DragDrop extends javax.swing.JFrame {
                 startingImage4.addMouseListener(null);
                 startingImage4.setTransferHandler(null);
             }
+            //sets the mouse listener and transfer handler off for the final image 
             endingImage4.addMouseListener(null);
             endingImage4.setTransferHandler(null);
-            tiles4 = 1;
-        } else {
+            tiles4 = 1; //Sets it as complete
+        } else { //Clears the text
             endingImage4.setText(null);
         }
-
-        if (tiles1 == 1 && tiles2 == 1 && tiles3 == 1 && tiles4 == 1) {
-            points += 20;
-            scoreJLabel.setText(points + " points");
+        
+        
+        //Checks to see if all the tiles are correct
+        if (tiles1 == 1 && tiles2 == 1 && tiles3 == 1 && tiles4 == 1) { //Level complete and allows you to go back to main map
             JOptionPane.showMessageDialog(null, "Congrats!  You got the food web correct!  Go back to the Main Map to choose another game!");
             mainMenuButton.setVisible(true);
             submitButton.setEnabled(false);
-        } else {
+        } else { //Message to keep trying
             JOptionPane.showMessageDialog(null, "Oops.  Looks like there might be an empty space or one of those were not placed in the correct spot.  Please try again.");
         }
 
@@ -549,7 +563,6 @@ public class DragDrop extends javax.swing.JFrame {
     private javax.swing.JPanel panel6;
     private javax.swing.JPanel panel7;
     private javax.swing.JPanel panel8;
-    public javax.swing.JLabel scoreJLabel;
     private javax.swing.JLabel startingImage1;
     private javax.swing.JLabel startingImage2;
     private javax.swing.JLabel startingImage3;
